@@ -1,8 +1,8 @@
 # GSBAIL — AI Project Portfolio
 
-**Author:** Teerapong Panboonyuen (Kao)
-**Affiliation:** GSBAIL — Government Savings Bank AI Lab (Government Savings Bank, Thailand)
-**Role:** Deputy Director of AI
+**Author:** Teerapong Panboonyuen (Kao)      
+**Affiliation:** GSBAIL — Government Savings Bank AI Lab (Government Savings Bank, Thailand)     
+**Role:** Deputy Director of AI   
 
 > A reference portfolio of AI system designs for GSB's AI Lab, spanning
 > fraud/AML detection, intelligent document processing, credit risk, loan
