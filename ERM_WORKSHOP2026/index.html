@@ -10,17 +10,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0a0c0f;
-    --panel:#12151a;
-    --panel-2:#181c22;
-    --line:#2a2f38;
-    --grey:#9aa0ac;
-    --grey-dim:#5c6270;
-    --text:#f2f1ec;
-    --amber:#ffb020;
-    --amber-dim:rgba(255,176,32,.14);
-    --teal:#2dd4bf;
-    --teal-dim:rgba(45,212,191,.14);
+    --bg:#ffffff;
+    --panel:#ffffff;
+    --panel-2:#f4f3ef;
+    --screen:#ffffff;
+    --screen-2:#fbfaf7;
+    --line:#e1dfd8;
+    --grey:#5c5f68;
+    --grey-dim:#a4a7ae;
+    --text:#0d0e10;
+    --amber:#d97706;
+    --amber-soft:rgba(217,119,6,.10);
+    --amber-line:rgba(217,119,6,.35);
+    --teal:#0d9488;
+    --teal-soft:rgba(13,148,136,.10);
+    --teal-line:rgba(13,148,136,.35);
     --radius:14px;
   }
   *{box-sizing:border-box;}
@@ -38,13 +42,13 @@
     content:"";
     position:fixed;inset:0;
     background-image:
-      linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      linear-gradient(rgba(13,14,16,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(13,14,16,.035) 1px, transparent 1px);
     background-size:42px 42px;
     pointer-events:none;
     z-index:0;
   }
-  h1,h2,h3{font-family:'Kanit',sans-serif;margin:0;}
+  h1,h2,h3{font-family:'Kanit',sans-serif;margin:0;color:var(--text);}
   .mono{font-family:'JetBrains Mono',monospace;}
   a{color:inherit;}
   .wrap{max-width:1180px;margin:0 auto;padding:0 28px;position:relative;z-index:1;}
@@ -57,21 +61,22 @@
     position:fixed;top:0;left:0;right:0;z-index:100;
     display:flex;align-items:center;justify-content:space-between;
     padding:16px 28px;
-    background:linear-gradient(to bottom, rgba(10,12,15,.9), transparent);
+    background:linear-gradient(to bottom, rgba(255,255,255,.92), rgba(255,255,255,0));
     pointer-events:none;
   }
-  .brand{display:flex;align-items:center;gap:10px;font-family:'Kanit';font-weight:600;font-size:.95rem;letter-spacing:.03em;}
-  .brand span.tag{font-family:'JetBrains Mono';font-size:.65rem;color:var(--amber);border:1px solid var(--amber-dim);background:var(--amber-dim);padding:2px 8px;border-radius:20px;letter-spacing:.08em;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Kanit';font-weight:600;font-size:.95rem;letter-spacing:.03em;color:var(--text);}
+  .brand span.tag{font-family:'JetBrains Mono';font-size:.65rem;color:var(--amber);border:1px solid var(--amber-line);background:var(--amber-soft);padding:2px 8px;border-radius:20px;letter-spacing:.08em;}
 
   /* side dot nav */
   .dotnav{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:16px;}
   .dotnav a{position:relative;width:9px;height:9px;border-radius:50%;background:transparent;border:1.5px solid var(--grey-dim);display:block;transition:.25s;}
-  .dotnav a.active{background:var(--amber);border-color:var(--amber);box-shadow:0 0 0 4px var(--amber-dim);}
+  .dotnav a.active{background:var(--amber);border-color:var(--amber);box-shadow:0 0 0 4px var(--amber-soft);}
   .dotnav a::after{
     content:attr(data-label);
     position:absolute;right:20px;top:50%;transform:translateY(-50%);
     font-family:'JetBrains Mono';font-size:.65rem;color:var(--grey);
     white-space:nowrap;opacity:0;transition:.2s;pointer-events:none;
+    background:#fff;padding:2px 8px;border-radius:6px;border:1px solid var(--line);
   }
   .dotnav a:hover::after{opacity:1;}
   @media (max-width:880px){.dotnav{display:none;}}
@@ -88,11 +93,12 @@
     display:flex;gap:10px;align-items:center;flex-wrap:wrap;
   }
   .eyebrow .dotlive{width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 0 var(--amber);animation:pulseDot 1.6s infinite;}
-  @keyframes pulseDot{0%{box-shadow:0 0 0 0 rgba(255,176,32,.6);}70%{box-shadow:0 0 0 8px rgba(255,176,32,0);}100%{box-shadow:0 0 0 0 rgba(255,176,32,0);}}
+  @keyframes pulseDot{0%{box-shadow:0 0 0 0 rgba(217,119,6,.5);}70%{box-shadow:0 0 0 8px rgba(217,119,6,0);}100%{box-shadow:0 0 0 0 rgba(217,119,6,0);}}
 
   .hero h1{
     font-size:clamp(2.6rem,8vw,6.4rem);
     font-weight:800;line-height:1.02;letter-spacing:-.01em;
+    color:var(--text);
   }
   .hero h1 .hl{color:var(--amber);}
   .hero .sub{
@@ -102,7 +108,7 @@
   .stat-strip{display:flex;gap:12px;flex-wrap:wrap;margin-top:38px;}
   .stat-chip{
     font-family:'JetBrains Mono';font-size:.72rem;letter-spacing:.05em;
-    border:1px solid var(--line);background:var(--panel);color:var(--grey);
+    border:1px solid var(--line);background:var(--panel-2);color:var(--grey);
     padding:8px 14px;border-radius:8px;
   }
   .stat-chip b{color:var(--text);}
@@ -112,12 +118,18 @@
   .scrollcue .arrow::after{content:"";position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--amber);animation:runline 1.8s infinite;}
   @keyframes runline{0%{top:-100%;}100%{top:100%;}}
 
-  /* radar decoration in hero background */
-  .radar-decor{
-    position:absolute;right:-120px;top:120px;width:640px;height:640px;
-    opacity:.5;pointer-events:none;
+  /* radar decoration in hero background - dark screen motif */
+  .radar-decor-wrap{
+    position:absolute;right:-160px;top:100px;width:640px;height:640px;
+    pointer-events:none;
   }
-  @media (max-width:1000px){.radar-decor{display:none;}}
+  .radar-decor-wrap .screen-bg{
+    position:absolute;inset:60px;border-radius:50%;background:var(--screen);
+    border:1.5px solid var(--text);
+    box-shadow:0 30px 80px rgba(0,0,0,.06);
+  }
+  .radar-decor{position:relative;width:100%;height:100%;opacity:.95;}
+  @media (max-width:1000px){.radar-decor-wrap{display:none;}}
 
   section{position:relative;padding:110px 0;}
   .section-head{max-width:680px;margin-bottom:56px;}
@@ -128,18 +140,24 @@
   /* concept compare */
   .compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
   @media (max-width:760px){.compare{grid-template-columns:1fr;}}
-  .compare .box{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:var(--panel);}
+  .compare .box{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:var(--panel);box-shadow:0 2px 18px rgba(13,14,16,.04);}
   .compare .box h3{font-size:1.3rem;margin-bottom:10px;}
-  .compare .box.rhino{border-color:rgba(255,176,32,.3);background:linear-gradient(160deg,var(--panel),rgba(255,176,32,.05));}
+  .compare .box.rhino{border-color:var(--amber-line);background:linear-gradient(160deg,#fff,var(--amber-soft));}
   .compare .box .tag{font-family:'JetBrains Mono';font-size:.68rem;color:var(--grey);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:8px;}
   .compare .box p{color:var(--grey);font-size:.96rem;margin:0;}
   .compare .box.rhino .tag{color:var(--amber);}
 
-  /* RADAR CHART */
+  /* RADAR CHART - dark screen embedded in white page */
   .radar-wrap{display:flex;justify-content:center;padding:20px 0 10px;}
-  .radar-svg{width:100%;max-width:620px;height:auto;}
-  .radar-ring{fill:none;stroke:var(--line);stroke-width:1;}
-  .radar-cross{stroke:var(--line);stroke-width:1;}
+  .radar-screen{
+    background:var(--screen);
+    border:1.5px solid var(--text);
+    border-radius:24px;padding:32px;width:100%;max-width:660px;
+    box-shadow:0 30px 70px rgba(13,14,16,.06);
+  }
+  .radar-svg{width:100%;height:auto;display:block;}
+  .radar-ring{fill:none;stroke:rgba(13,14,16,.16);stroke-width:1;}
+  .radar-cross{stroke:rgba(13,14,16,.16);stroke-width:1;}
   .sweep{transform-origin:300px 300px;animation:spin 7s linear infinite;}
   @media (prefers-reduced-motion:reduce){.sweep{animation:none;}}
   @keyframes spin{to{transform:rotate(360deg);}}
@@ -148,15 +166,17 @@
   .blip circle.ring{fill:none;stroke:var(--amber);stroke-width:1.5;opacity:.7;animation:ping 2.4s ease-out infinite;}
   @media (prefers-reduced-motion:reduce){.blip circle.ring{animation:none;}}
   @keyframes ping{0%{r:6;opacity:.7;}80%{r:26;opacity:0;}100%{r:26;opacity:0;}}
-  .blip text{font-family:'JetBrains Mono';font-size:11px;fill:var(--grey);}
-  .blip:hover text{fill:var(--text);}
+  .blip text{font-family:'JetBrains Mono';font-size:11px;fill:rgba(13,14,16,.55);}
+  .blip .lbl2{fill:rgba(13,14,16,.9) !important;}
+  .blip:hover text{fill:#0d0e10;}
   .blip:hover circle.core{fill:var(--teal);}
-  .radar-label{font-family:'JetBrains Mono';font-size:10px;fill:var(--grey-dim);letter-spacing:.05em;}
+  .radar-label{font-family:'JetBrains Mono';font-size:10px;fill:rgba(13,14,16,.4);letter-spacing:.05em;}
 
   /* CASE FILES */
   .case-file{
     border:1px solid var(--line);border-radius:var(--radius);
     background:var(--panel);padding:38px;margin-bottom:34px;
+    box-shadow:0 2px 24px rgba(13,14,16,.04);
     opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,.8,.24,1), transform .8s cubic-bezier(.16,.8,.24,1);
   }
   .case-file.in{opacity:1;transform:none;}
@@ -168,8 +188,8 @@
   .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px;}
   @media (max-width:680px){.case-grid{grid-template-columns:1fr;}}
   .box-risk,.box-opp{border-radius:10px;padding:20px 22px;border:1px solid var(--line);}
-  .box-risk{background:var(--amber-dim);border-color:rgba(255,176,32,.25);}
-  .box-opp{background:var(--teal-dim);border-color:rgba(45,212,191,.25);}
+  .box-risk{background:var(--amber-soft);border-color:var(--amber-line);}
+  .box-opp{background:var(--teal-soft);border-color:var(--teal-line);}
   .box-risk .lbl,.box-opp .lbl{font-family:'JetBrains Mono';font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:8px;}
   .box-risk .lbl{color:var(--amber);}
   .box-opp .lbl{color:var(--teal);}
@@ -182,10 +202,10 @@
   }
   .rhino-quote .icon{font-size:1.6rem;line-height:1;flex-shrink:0;}
   .rhino-quote .lbl{font-family:'JetBrains Mono';font-size:.68rem;color:var(--grey);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:6px;}
-  .rhino-quote p{margin:0;font-size:.98rem;}
+  .rhino-quote p{margin:0;font-size:.98rem;color:var(--text);}
 
   .mitigation{
-    background:#0d0f13;border:1px solid var(--line);border-radius:10px;padding:20px 22px;
+    background:var(--screen);border:1.5px solid var(--text);border-radius:10px;padding:20px 22px;
   }
   .mitigation .lbl{font-family:'JetBrains Mono';font-size:.72rem;color:var(--teal);letter-spacing:.08em;display:block;margin-bottom:12px;}
   .mitigation ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;}
@@ -197,13 +217,13 @@
   footer{
     padding:90px 0 60px;text-align:center;border-top:1px solid var(--line);margin-top:60px;
   }
-  footer .closing{font-family:'Kanit';font-weight:800;font-size:clamp(1.8rem,4.5vw,3rem);margin-bottom:40px;}
+  footer .closing{font-family:'Kanit';font-weight:800;font-size:clamp(1.8rem,4.5vw,3rem);margin-bottom:40px;color:var(--text);}
   footer .closing .hl{color:var(--amber);}
   .credit{font-family:'JetBrains Mono';font-size:.78rem;color:var(--grey);letter-spacing:.03em;line-height:2;}
   .credit .names{color:var(--text);font-size:.95rem;letter-spacing:.06em;}
   .credit .div{margin-top:6px;}
 
-  ::selection{background:var(--amber);color:#0a0c0f;}
+  ::selection{background:var(--amber);color:#ffffff;}
 </style>
 </head>
 <body>
@@ -235,23 +255,26 @@
       <div class="stat-chip">STATUS: <b style="color:var(--amber)">ACTIVE</b></div>
     </div>
   </div>
-  <svg class="radar-decor" viewBox="0 0 600 600">
-    <circle class="radar-ring" cx="300" cy="300" r="80"/>
-    <circle class="radar-ring" cx="300" cy="300" r="150"/>
-    <circle class="radar-ring" cx="300" cy="300" r="220"/>
-    <circle class="radar-ring" cx="300" cy="300" r="280"/>
-    <line class="radar-cross" x1="20" y1="300" x2="580" y2="300"/>
-    <line class="radar-cross" x1="300" y1="20" x2="300" y2="580"/>
-    <g class="sweep">
-      <path d="M300,300 L300,20 A280,280 0 0,1 542,150 Z" fill="url(#g1)"/>
-    </g>
-    <defs>
-      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="#ffb020" stop-opacity="0.35"/>
-        <stop offset="100%" stop-color="#ffb020" stop-opacity="0"/>
-      </linearGradient>
-    </defs>
-  </svg>
+  <div class="radar-decor-wrap">
+    <div class="screen-bg"></div>
+    <svg class="radar-decor" viewBox="0 0 600 600">
+      <circle class="radar-ring" cx="300" cy="300" r="80"/>
+      <circle class="radar-ring" cx="300" cy="300" r="150"/>
+      <circle class="radar-ring" cx="300" cy="300" r="220"/>
+      <circle class="radar-ring" cx="300" cy="300" r="280"/>
+      <line class="radar-cross" x1="20" y1="300" x2="580" y2="300"/>
+      <line class="radar-cross" x1="300" y1="20" x2="300" y2="580"/>
+      <g class="sweep">
+        <path d="M300,300 L300,20 A280,280 0 0,1 542,150 Z" fill="url(#g1)"/>
+      </g>
+      <defs>
+        <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#d97706" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#d97706" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
   <div class="scrollcue"><div class="arrow"></div> SCROLL</div>
 </section>
 
@@ -287,6 +310,7 @@
       <p>ระยะจากจุดศูนย์กลาง = ความใกล้ตัว (ยิ่งใกล้ ยิ่งเร่งด่วน) · ขนาดจุด = ความรุนแรงของผลกระทบ · แตะจุดเพื่อดูรายละเอียด</p>
     </div>
     <div class="radar-wrap">
+      <div class="radar-screen">
       <svg class="radar-svg" viewBox="0 0 600 600">
         <circle class="radar-ring" cx="300" cy="300" r="60"/>
         <circle class="radar-ring" cx="300" cy="300" r="130"/>
@@ -302,8 +326,8 @@
         </g>
         <defs>
           <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#ffb020" stop-opacity="0.28"/>
-            <stop offset="100%" stop-color="#ffb020" stop-opacity="0"/>
+            <stop offset="0%" stop-color="#d97706" stop-opacity="0.32"/>
+            <stop offset="100%" stop-color="#d97706" stop-opacity="0"/>
           </linearGradient>
         </defs>
 
@@ -311,45 +335,46 @@
         <g class="blip" data-target="#gr-01">
           <circle class="ring" cx="300" cy="238"/>
           <circle class="core" cx="300" cy="238" r="13"/>
-          <text x="316" y="234">GR-01</text>
-          <text x="316" y="248" style="fill:var(--grey)">หนี้ครัวเรือน</text>
+          <text x="316" y="234" class="lbl2">GR-01</text>
+          <text x="316" y="248">หนี้ครัวเรือน</text>
         </g>
         <!-- GR-02 digital disruption -->
         <g class="blip" data-target="#gr-02">
           <circle class="ring" cx="382" cy="252"/>
           <circle class="core" cx="382" cy="252" r="13"/>
-          <text x="398" y="248">GR-02</text>
-          <text x="398" y="262" style="fill:var(--grey)">Digital Disruption</text>
+          <text x="398" y="248" class="lbl2">GR-02</text>
+          <text x="398" y="262">Digital Disruption</text>
         </g>
         <!-- GR-03 aged society -->
         <g class="blip" data-target="#gr-03">
           <circle class="ring" cx="411" cy="364"/>
           <circle class="core" cx="411" cy="364" r="11"/>
-          <text x="427" y="360">GR-03</text>
-          <text x="427" y="374" style="fill:var(--grey)">สังคมสูงวัย</text>
+          <text x="427" y="360" class="lbl2">GR-03</text>
+          <text x="427" y="374">สังคมสูงวัย</text>
         </g>
         <!-- GR-04 climate -->
         <g class="blip" data-target="#gr-04">
           <circle class="ring" cx="300" cy="450"/>
           <circle class="core" cx="300" cy="450" r="15"/>
-          <text x="316" y="446">GR-04</text>
-          <text x="316" y="460" style="fill:var(--grey)">Climate Risk</text>
+          <text x="316" y="446" class="lbl2">GR-04</text>
+          <text x="316" y="460">Climate Risk</text>
         </g>
         <!-- GR-05 cyber -->
         <g class="blip" data-target="#gr-05">
           <circle class="ring" cx="237" cy="337"/>
           <circle class="core" cx="237" cy="337" r="11"/>
-          <text x="107" y="333">GR-05</text>
-          <text x="107" y="347" style="fill:var(--grey)">Cyber Threat</text>
+          <text x="107" y="333" class="lbl2">GR-05</text>
+          <text x="107" y="347">Cyber Threat</text>
         </g>
         <!-- GR-06 geopolitics -->
         <g class="blip" data-target="#gr-06">
           <circle class="ring" cx="180" cy="231"/>
           <circle class="core" cx="180" cy="231" r="10"/>
-          <text x="50" y="227">GR-06</text>
-          <text x="50" y="241" style="fill:var(--grey)">ภูมิรัฐศาสตร์</text>
+          <text x="50" y="227" class="lbl2">GR-06</text>
+          <text x="50" y="241">ภูมิรัฐศาสตร์</text>
         </g>
       </svg>
+      </div>
     </div>
   </div>
 </section>
