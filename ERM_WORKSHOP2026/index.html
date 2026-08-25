@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เรดาร์แรดเทา · Enterprise Risk Management</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A6%8F%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;800&family=IBM+Plex+Sans+Thai:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0c0f;
+    --panel:#12151a;
+    --panel-2:#181c22;
+    --line:#2a2f38;
+    --grey:#9aa0ac;
+    --grey-dim:#5c6270;
+    --text:#f2f1ec;
+    --amber:#ffb020;
+    --amber-dim:rgba(255,176,32,.14);
+    --teal:#2dd4bf;
+    --teal-dim:rgba(45,212,191,.14);
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans Thai',sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size:42px 42px;
+    pointer-events:none;
+    z-index:0;
+  }
+  h1,h2,h3{font-family:'Kanit',sans-serif;margin:0;}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;position:relative;z-index:1;}
+
+  /* progress bar */
+  #progress{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--amber),var(--teal));z-index:999;transition:width .1s linear;}
+
+  /* top bar */
+  .topbar{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;
+    background:linear-gradient(to bottom, rgba(10,12,15,.9), transparent);
+    pointer-events:none;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Kanit';font-weight:600;font-size:.95rem;letter-spacing:.03em;}
+  .brand span.tag{font-family:'JetBrains Mono';font-size:.65rem;color:var(--amber);border:1px solid var(--amber-dim);background:var(--amber-dim);padding:2px 8px;border-radius:20px;letter-spacing:.08em;}
+
+  /* side dot nav */
+  .dotnav{position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:16px;}
+  .dotnav a{position:relative;width:9px;height:9px;border-radius:50%;background:transparent;border:1.5px solid var(--grey-dim);display:block;transition:.25s;}
+  .dotnav a.active{background:var(--amber);border-color:var(--amber);box-shadow:0 0 0 4px var(--amber-dim);}
+  .dotnav a::after{
+    content:attr(data-label);
+    position:absolute;right:20px;top:50%;transform:translateY(-50%);
+    font-family:'JetBrains Mono';font-size:.65rem;color:var(--grey);
+    white-space:nowrap;opacity:0;transition:.2s;pointer-events:none;
+  }
+  .dotnav a:hover::after{opacity:1;}
+  @media (max-width:880px){.dotnav{display:none;}}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;
+    position:relative;padding-top:90px;padding-bottom:60px;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono';font-size:.72rem;letter-spacing:.15em;
+    color:var(--grey);text-transform:uppercase;margin-bottom:22px;
+    display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+  }
+  .eyebrow .dotlive{width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 0 var(--amber);animation:pulseDot 1.6s infinite;}
+  @keyframes pulseDot{0%{box-shadow:0 0 0 0 rgba(255,176,32,.6);}70%{box-shadow:0 0 0 8px rgba(255,176,32,0);}100%{box-shadow:0 0 0 0 rgba(255,176,32,0);}}
+
+  .hero h1{
+    font-size:clamp(2.6rem,8vw,6.4rem);
+    font-weight:800;line-height:1.02;letter-spacing:-.01em;
+  }
+  .hero h1 .hl{color:var(--amber);}
+  .hero .sub{
+    max-width:640px;margin-top:26px;font-size:clamp(1.05rem,2vw,1.35rem);color:var(--grey);
+    font-weight:300;
+  }
+  .stat-strip{display:flex;gap:12px;flex-wrap:wrap;margin-top:38px;}
+  .stat-chip{
+    font-family:'JetBrains Mono';font-size:.72rem;letter-spacing:.05em;
+    border:1px solid var(--line);background:var(--panel);color:var(--grey);
+    padding:8px 14px;border-radius:8px;
+  }
+  .stat-chip b{color:var(--text);}
+
+  .scrollcue{position:absolute;bottom:36px;left:28px;display:flex;align-items:center;gap:10px;color:var(--grey-dim);font-family:'JetBrains Mono';font-size:.7rem;letter-spacing:.1em;}
+  .scrollcue .arrow{width:1px;height:30px;background:linear-gradient(to bottom, var(--grey-dim), transparent);position:relative;overflow:hidden;}
+  .scrollcue .arrow::after{content:"";position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--amber);animation:runline 1.8s infinite;}
+  @keyframes runline{0%{top:-100%;}100%{top:100%;}}
+
+  /* radar decoration in hero background */
+  .radar-decor{
+    position:absolute;right:-120px;top:120px;width:640px;height:640px;
+    opacity:.5;pointer-events:none;
+  }
+  @media (max-width:1000px){.radar-decor{display:none;}}
+
+  section{position:relative;padding:110px 0;}
+  .section-head{max-width:680px;margin-bottom:56px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(1.9rem,4.2vw,3.1rem);font-weight:800;}
+  .section-head p{color:var(--grey);margin-top:16px;font-size:1.05rem;}
+
+  /* concept compare */
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media (max-width:760px){.compare{grid-template-columns:1fr;}}
+  .compare .box{border:1px solid var(--line);border-radius:var(--radius);padding:28px;background:var(--panel);}
+  .compare .box h3{font-size:1.3rem;margin-bottom:10px;}
+  .compare .box.rhino{border-color:rgba(255,176,32,.3);background:linear-gradient(160deg,var(--panel),rgba(255,176,32,.05));}
+  .compare .box .tag{font-family:'JetBrains Mono';font-size:.68rem;color:var(--grey);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:8px;}
+  .compare .box p{color:var(--grey);font-size:.96rem;margin:0;}
+  .compare .box.rhino .tag{color:var(--amber);}
+
+  /* RADAR CHART */
+  .radar-wrap{display:flex;justify-content:center;padding:20px 0 10px;}
+  .radar-svg{width:100%;max-width:620px;height:auto;}
+  .radar-ring{fill:none;stroke:var(--line);stroke-width:1;}
+  .radar-cross{stroke:var(--line);stroke-width:1;}
+  .sweep{transform-origin:300px 300px;animation:spin 7s linear infinite;}
+  @media (prefers-reduced-motion:reduce){.sweep{animation:none;}}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .blip{cursor:pointer;}
+  .blip circle.core{fill:var(--amber);}
+  .blip circle.ring{fill:none;stroke:var(--amber);stroke-width:1.5;opacity:.7;animation:ping 2.4s ease-out infinite;}
+  @media (prefers-reduced-motion:reduce){.blip circle.ring{animation:none;}}
+  @keyframes ping{0%{r:6;opacity:.7;}80%{r:26;opacity:0;}100%{r:26;opacity:0;}}
+  .blip text{font-family:'JetBrains Mono';font-size:11px;fill:var(--grey);}
+  .blip:hover text{fill:var(--text);}
+  .blip:hover circle.core{fill:var(--teal);}
+  .radar-label{font-family:'JetBrains Mono';font-size:10px;fill:var(--grey-dim);letter-spacing:.05em;}
+
+  /* CASE FILES */
+  .case-file{
+    border:1px solid var(--line);border-radius:var(--radius);
+    background:var(--panel);padding:38px;margin-bottom:34px;
+    opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.16,.8,.24,1), transform .8s cubic-bezier(.16,.8,.24,1);
+  }
+  .case-file.in{opacity:1;transform:none;}
+  .case-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .case-head .code{font-family:'JetBrains Mono';color:var(--amber);font-size:.85rem;letter-spacing:.1em;}
+  .case-head h3{font-size:clamp(1.5rem,3vw,2rem);font-weight:600;}
+  .case-file .desc{color:var(--grey);max-width:760px;margin:14px 0 26px;}
+
+  .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px;}
+  @media (max-width:680px){.case-grid{grid-template-columns:1fr;}}
+  .box-risk,.box-opp{border-radius:10px;padding:20px 22px;border:1px solid var(--line);}
+  .box-risk{background:var(--amber-dim);border-color:rgba(255,176,32,.25);}
+  .box-opp{background:var(--teal-dim);border-color:rgba(45,212,191,.25);}
+  .box-risk .lbl,.box-opp .lbl{font-family:'JetBrains Mono';font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:8px;}
+  .box-risk .lbl{color:var(--amber);}
+  .box-opp .lbl{color:var(--teal);}
+  .box-risk p,.box-opp p{margin:0;font-size:.95rem;color:var(--text);}
+
+  .rhino-quote{
+    display:flex;gap:16px;align-items:flex-start;
+    border-left:3px solid var(--amber);background:var(--panel-2);
+    padding:18px 22px;border-radius:0 10px 10px 0;margin-bottom:22px;
+  }
+  .rhino-quote .icon{font-size:1.6rem;line-height:1;flex-shrink:0;}
+  .rhino-quote .lbl{font-family:'JetBrains Mono';font-size:.68rem;color:var(--grey);letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:6px;}
+  .rhino-quote p{margin:0;font-size:.98rem;}
+
+  .mitigation{
+    background:#0d0f13;border:1px solid var(--line);border-radius:10px;padding:20px 22px;
+  }
+  .mitigation .lbl{font-family:'JetBrains Mono';font-size:.72rem;color:var(--teal);letter-spacing:.08em;display:block;margin-bottom:12px;}
+  .mitigation ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;}
+  .mitigation li{font-family:'JetBrains Mono';font-size:.86rem;color:var(--grey);}
+  .mitigation li::before{content:"> ";color:var(--teal);}
+  .mitigation li span{color:var(--text);font-family:'IBM Plex Sans Thai';font-size:.95rem;}
+
+  /* footer */
+  footer{
+    padding:90px 0 60px;text-align:center;border-top:1px solid var(--line);margin-top:60px;
+  }
+  footer .closing{font-family:'Kanit';font-weight:800;font-size:clamp(1.8rem,4.5vw,3rem);margin-bottom:40px;}
+  footer .closing .hl{color:var(--amber);}
+  .credit{font-family:'JetBrains Mono';font-size:.78rem;color:var(--grey);letter-spacing:.03em;line-height:2;}
+  .credit .names{color:var(--text);font-size:.95rem;letter-spacing:.06em;}
+  .credit .div{margin-top:6px;}
+
+  ::selection{background:var(--amber);color:#0a0c0f;}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<div class="topbar">
+  <div class="brand">🦏 <span>เรดาร์แรดเทา</span> <span class="tag">ERM</span></div>
+</div>
+
+<nav class="dotnav">
+  <a href="#gr-01" data-label="GR-01 หนี้ครัวเรือน"></a>
+  <a href="#gr-02" data-label="GR-02 Digital Disruption"></a>
+  <a href="#gr-03" data-label="GR-03 สังคมสูงวัย"></a>
+  <a href="#gr-04" data-label="GR-04 Climate Risk"></a>
+  <a href="#gr-05" data-label="GR-05 Cyber Threat"></a>
+  <a href="#gr-06" data-label="GR-06 ภูมิรัฐศาสตร์"></a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span class="dotlive"></span> ENTERPRISE RISK MANAGEMENT · ธนาคารรัฐ</div>
+    <h1>เรดาร์<span class="hl">แรดเทา</span><br>ของธนาคารรัฐ</h1>
+    <p class="sub">6 มหาเทรนด์ที่ทุกคนมองเห็น... แต่ยังไม่ลงมือ<br>ก่อนที่มันจะวิ่งเข้าชนงบดุล</p>
+    <div class="stat-strip">
+      <div class="stat-chip">SIGNALS: <b>06</b></div>
+      <div class="stat-chip">ZONE: <b>HIGH-PROB × HIGH-IMPACT</b></div>
+      <div class="stat-chip">STATUS: <b style="color:var(--amber)">ACTIVE</b></div>
+    </div>
+  </div>
+  <svg class="radar-decor" viewBox="0 0 600 600">
+    <circle class="radar-ring" cx="300" cy="300" r="80"/>
+    <circle class="radar-ring" cx="300" cy="300" r="150"/>
+    <circle class="radar-ring" cx="300" cy="300" r="220"/>
+    <circle class="radar-ring" cx="300" cy="300" r="280"/>
+    <line class="radar-cross" x1="20" y1="300" x2="580" y2="300"/>
+    <line class="radar-cross" x1="300" y1="20" x2="300" y2="580"/>
+    <g class="sweep">
+      <path d="M300,300 L300,20 A280,280 0 0,1 542,150 Z" fill="url(#g1)"/>
+    </g>
+    <defs>
+      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#ffb020" stop-opacity="0.35"/>
+        <stop offset="100%" stop-color="#ffb020" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+  </svg>
+  <div class="scrollcue"><div class="arrow"></div> SCROLL</div>
+</section>
+
+<!-- CONCEPT -->
+<section id="concept">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">CONCEPT.LOG</div>
+      <h2>แรดเทา ไม่ใช่หงส์ดำ</h2>
+      <p>หงส์ดำคือสิ่งที่ไม่มีใครคาดเดาได้ — แต่แรดเทาคือสัตว์ตัวใหญ่ วิ่งตรงเข้ามาแบบให้เห็นชัดๆ ทุกคนรู้ว่ามันมา แต่กลับไม่มีใครหลบทันเวลา</p>
+    </div>
+    <div class="compare">
+      <div class="box">
+        <span class="tag">Black Swan</span>
+        <h3>เหตุการณ์ที่ไม่มีใครทัน</h3>
+        <p>ความน่าจะเป็นต่ำ ผลกระทบรุนแรง คาดการณ์ล่วงหน้าไม่ได้เลย เช่น วิกฤตที่ไม่มีสัญญาณเตือน</p>
+      </div>
+      <div class="box rhino">
+        <span class="tag">🦏 Grey Rhino</span>
+        <h3>เหตุการณ์ที่รู้อยู่แล้วว่าจะมา</h3>
+        <p>ความน่าจะเป็นสูง ผลกระทบรุนแรง มองเห็นได้ล่วงหน้า แต่มักถูกมองข้ามเพราะ "ยังไม่ถึงตัว" — จนกว่ามันจะวิ่งมาถึง</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RADAR -->
+<section id="radar">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">SIGNAL MAP</div>
+      <h2>6 สัญญาณบนหน้าจอเรดาร์</h2>
+      <p>ระยะจากจุดศูนย์กลาง = ความใกล้ตัว (ยิ่งใกล้ ยิ่งเร่งด่วน) · ขนาดจุด = ความรุนแรงของผลกระทบ · แตะจุดเพื่อดูรายละเอียด</p>
+    </div>
+    <div class="radar-wrap">
+      <svg class="radar-svg" viewBox="0 0 600 600">
+        <circle class="radar-ring" cx="300" cy="300" r="60"/>
+        <circle class="radar-ring" cx="300" cy="300" r="130"/>
+        <circle class="radar-ring" cx="300" cy="300" r="200"/>
+        <circle class="radar-ring" cx="300" cy="300" r="260"/>
+        <line class="radar-cross" x1="30" y1="300" x2="570" y2="300"/>
+        <line class="radar-cross" x1="300" y1="30" x2="300" y2="570"/>
+        <text class="radar-label" x="308" y="50">HIGH URGENCY</text>
+        <text class="radar-label" x="308" y="565">LOW URGENCY</text>
+
+        <g class="sweep">
+          <path d="M300,300 L300,30 A270,270 0 0,1 534,165 Z" fill="url(#g2)"/>
+        </g>
+        <defs>
+          <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ffb020" stop-opacity="0.28"/>
+            <stop offset="100%" stop-color="#ffb020" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+
+        <!-- GR-01 household debt -->
+        <g class="blip" data-target="#gr-01">
+          <circle class="ring" cx="300" cy="238"/>
+          <circle class="core" cx="300" cy="238" r="13"/>
+          <text x="316" y="234">GR-01</text>
+          <text x="316" y="248" style="fill:var(--grey)">หนี้ครัวเรือน</text>
+        </g>
+        <!-- GR-02 digital disruption -->
+        <g class="blip" data-target="#gr-02">
+          <circle class="ring" cx="382" cy="252"/>
+          <circle class="core" cx="382" cy="252" r="13"/>
+          <text x="398" y="248">GR-02</text>
+          <text x="398" y="262" style="fill:var(--grey)">Digital Disruption</text>
+        </g>
+        <!-- GR-03 aged society -->
+        <g class="blip" data-target="#gr-03">
+          <circle class="ring" cx="411" cy="364"/>
+          <circle class="core" cx="411" cy="364" r="11"/>
+          <text x="427" y="360">GR-03</text>
+          <text x="427" y="374" style="fill:var(--grey)">สังคมสูงวัย</text>
+        </g>
+        <!-- GR-04 climate -->
+        <g class="blip" data-target="#gr-04">
+          <circle class="ring" cx="300" cy="450"/>
+          <circle class="core" cx="300" cy="450" r="15"/>
+          <text x="316" y="446">GR-04</text>
+          <text x="316" y="460" style="fill:var(--grey)">Climate Risk</text>
+        </g>
+        <!-- GR-05 cyber -->
+        <g class="blip" data-target="#gr-05">
+          <circle class="ring" cx="237" cy="337"/>
+          <circle class="core" cx="237" cy="337" r="11"/>
+          <text x="107" y="333">GR-05</text>
+          <text x="107" y="347" style="fill:var(--grey)">Cyber Threat</text>
+        </g>
+        <!-- GR-06 geopolitics -->
+        <g class="blip" data-target="#gr-06">
+          <circle class="ring" cx="180" cy="231"/>
+          <circle class="core" cx="180" cy="231" r="10"/>
+          <text x="50" y="227">GR-06</text>
+          <text x="50" y="241" style="fill:var(--grey)">ภูมิรัฐศาสตร์</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- CASE FILES -->
+<section id="cases">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">CASE FILES</div>
+      <h2>เปิดแฟ้มแรดเทาทั้ง 6 ตัว</h2>
+      <p>ผลกระทบ − = ความเสี่ยง · ผลกระทบ + = โอกาส · พร้อมแผนรับมือระดับปฏิบัติการ</p>
+    </div>
+
+    <!-- GR-01 -->
+    <article class="case-file" id="gr-01">
+      <div class="case-head"><span class="code">SIGNAL GR-01</span><h3>หนี้ครัวเรือนพุ่งไม่หยุด</h3></div>
+      <p class="desc">หนี้ครัวเรือนไทยลอยตัวอยู่ระดับสูงต่อเนื่องหลายปี และธนาคารรัฐยืนอยู่กลางพายุนี้พอดี เพราะฐานลูกค้าคือกลุ่มเปราะบางที่สุด</p>
+      <div class="case-grid">
+        <div class="box-risk"><span class="lbl">ผลกระทบ − ความเสี่ยง</span><p>NPL พุ่ง ต้องกันสำรองเพิ่ม คุณภาพพอร์ตสินเชื่อรายย่อยแย่ลงต่อเนื่อง</p></div>
+        <div class="box-opp"><span class="lbl">ผลกระทบ + โอกาส</span><p>ธุรกิจปรับโครงสร้างหนี้ครบวงจร Debt Clinic ตอกย้ำบทบาท "ธนาคารเพื่อสังคม"</p></div>
+      </div>
+      <div class="rhino-quote"><span class="icon">🦏</span><div><span class="lbl">ทำไมถึงเป็นแรดเทา</span><p>รู้มาเป็นสิบปี เห็นชัดในทุกรายงาน แต่ยังแก้ไม่จบ — นี่คือแรดเทาตัวใหญ่ที่สุดของระบบธนาคารไทย</p></div></div>
+      <div class="mitigation"><span class="lbl">COUNTERMEASURE.EXE</span>
+        <ul>
+          <li><span>ยกระดับ Credit Scoring ด้วย Alternative Data</span></li>
+          <li><span>ขยายโครงการปรับโครงสร้างหนี้เชิงรุก</span></li>
+          <li><span>ผลิตภัณฑ์ Financial Wellness ก่อนเป็นหนี้เสีย</span></li>
+          <li><span>ตั้ง Early Warning System ระดับลูกหนี้รายคน</span></li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- GR-02 -->
+    <article class="case-file" id="gr-02">
+      <div class="case-head"><span class="code">SIGNAL GR-02</span><h3>Virtual Bank & Non-Bank บุกตลาด</h3></div>
+      <p class="desc">ใบอนุญาต Virtual Bank เปิดสมรภูมิใหม่ ขณะที่ Non-bank เข้าถึงลูกค้าได้เร็วกว่าธนาคารดั้งเดิมหลายก้าว</p>
+      <div class="case-grid">
+        <div class="box-risk"><span class="lbl">ผลกระทบ − ความเสี่ยง</span><p>ลูกค้าฐานล่างไหลออก ต้นทุนแข่งขันสูงขึ้น เกิด War for AI/Tech Talent</p></div>
+        <div class="box-opp"><span class="lbl">ผลกระทบ + โอกาส</span><p>Gen AI ยกระดับ Operation เข้าถึงกลุ่ม Unbanked ด้วย Alternative-data Scoring</p></div>
+      </div>
+      <div class="rhino-quote"><span class="icon">🦏</span><div><span class="lbl">ทำไมถึงเป็นแรดเทา</span><p>เห็นมาตั้งแต่ยุค Fintech เจนแรก แต่ Legacy System ยังฉุดความเร็วในการปรับตัวขององค์กร</p></div></div>
+      <div class="mitigation"><span class="lbl">COUNTERMEASURE.EXE</span>
+        <ul>
+          <li><span>เร่ง Modernize Core Banking</span></li>
+          <li><span>จับมือพันธมิตร Fintech แบบ Co-create</span></li>
+          <li><span>ตั้ง AI Sandbox ทดสอบสินเชื่อไมโคร</span></li>
+          <li><span>Reskill พนักงานสู่ Digital Talent</span></li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- GR-03 -->
+    <article class="case-file" id="gr-03">
+      <div class="case-head"><span class="code">SIGNAL GR-03</span><h3>สังคมสูงวัยเต็มรูปแบบ</h3></div>
+      <p class="desc">ไทยเข้าสู่สังคมสูงวัยระดับสุดยอด ฐานลูกค้าและกำลังคนของธนาคารเปลี่ยนโครงสร้างอย่างถาวร ไม่ใช่ชั่วคราว</p>
+      <div class="case-grid">
+        <div class="box-risk"><span class="lbl">ผลกระทบ − ความเสี่ยง</span><p>ฐานผู้กู้วัยทำงานหด เงินออมถูกดึงออกไปใช้จ่ายวัยเกษียณ ขาดแรงงานสายธนาคาร</p></div>
+        <div class="box-opp"><span class="lbl">ผลกระทบ + โอกาส</span><p>ผลิตภัณฑ์ Pension และ Reverse Mortgage, Wealth Transfer, กลับสู่รากแท้ "ธนาคารเพื่อการออม"</p></div>
+      </div>
+      <div class="rhino-quote"><span class="icon">🦏</span><div><span class="lbl">ทำไมถึงเป็นแรดเทา</span><p>ข้อมูลประชากรฟันธงมาสิบปีแล้ว ไม่มีใครไม่รู้ แต่ผลิตภัณฑ์ก็ยังตามไม่ทัน</p></div></div>
+      <div class="mitigation"><span class="lbl">COUNTERMEASURE.EXE</span>
+        <ul>
+          <li><span>ออกแบบสาขาและ Digital UX สำหรับผู้สูงวัย</span></li>
+          <li><span>พัฒนาผลิตภัณฑ์การเงินหลังเกษียณครบวงจร</span></li>
+          <li><span>จับมือพันธมิตรประกันสุขภาพระยะยาว</span></li>
+          <li><span>วางแผนกำลังคนทดแทนล่วงหน้า 10 ปี</span></li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- GR-04 -->
+    <article class="case-file" id="gr-04">
+      <div class="case-head"><span class="code">SIGNAL GR-04</span><h3>Climate Transition Risk</h3></div>
+      <p class="desc">โลกร้อนไม่ใช่เรื่องอนาคต พอร์ตสินเชื่อเกษตรและ SME คือแนวหน้าที่รับแรงกระแทกก่อนใคร</p>
+      <div class="case-grid">
+        <div class="box-risk"><span class="lbl">ผลกระทบ − ความเสี่ยง</span><p>ภัยแล้ง น้ำท่วมทุบพอร์ตเกษตร ต้นทุน Compliance ESG/Taxonomy Stranded Asset กลุ่ม High-carbon</p></div>
+        <div class="box-opp"><span class="lbl">ผลกระทบ + โอกาส</span><p>ผู้นำ Green และ Just Transition Finance, Social Bond, สร้างแบรนด์ธนาคารเพื่อโลก</p></div>
+      </div>
+      <div class="rhino-quote"><span class="icon">🦏</span><div><span class="lbl">ทำไมถึงเป็นแรดเทา</span><p>คำเตือนมา 30 ปีจากนักวิทยาศาสตร์ทั่วโลก แต่พอร์ตสินเชื่อยังกระจุกตัวในพื้นที่เสี่ยงภูมิอากาศ</p></div></div>
+      <div class="mitigation"><span class="lbl">COUNTERMEASURE.EXE</span>
+        <ul>
+          <li><span>ทำ Climate Stress Test ระดับพอร์ตสินเชื่อ</span></li>
+          <li><span>ให้คะแนน ESG ผู้กู้รายย่อยและ SME</span></li>
+          <li><span>ออกสินเชื่อ Just Transition สำหรับเกษตรกร</span></li>
+          <li><span>ผนวก Climate Risk เข้า Credit Policy</span></li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- GR-05 -->
+    <article class="case-file" id="gr-05">
+      <div class="case-head"><span class="code">SIGNAL GR-05</span><h3>ภัยไซเบอร์ยกระดับ</h3></div>
+      <p class="desc">ธนาคารรัฐคือ Critical Infrastructure ระดับชาติ จึงเป็นเป้าหมายอันดับหนึ่งของการโจมตีไซเบอร์เสมอ</p>
+      <div class="case-grid">
+        <div class="box-risk"><span class="lbl">ผลกระทบ − ความเสี่ยง</span><p>Ransomware และ Data Breach เสียหายมูลค่ามหาศาล ความเชื่อมั่นของประชาชนพังได้ในคืนเดียว</p></div>
+        <div class="box-opp"><span class="lbl">ผลกระทบ + โอกาส</span><p>สร้างจุดขาย "ธนาคารที่ปลอดภัยที่สุด" ยกระดับความเชื่อมั่นทั้งระบบการเงิน</p></div>
+      </div>
+      <div class="rhino-quote"><span class="icon">🦏</span><div><span class="lbl">ทำไมถึงเป็นแรดเทา</span><p>สถิติการโจมตีเพิ่มขึ้นทุกปีแบบคาดเดาได้ แต่งบและคนด้านไซเบอร์ยังโตไม่ทันภัยคุกคาม</p></div></div>
+      <div class="mitigation"><span class="lbl">COUNTERMEASURE.EXE</span>
+        <ul>
+          <li><span>Zero-trust Architecture ทั้งองค์กร</span></li>
+          <li><span>Cyber Drill สม่ำเสมอทุกไตรมาส</span></li>
+          <li><span>ยกระดับ Data Governance</span></li>
+          <li><span>พิจารณา Cyber Insurance ระดับองค์กร</span></li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- GR-06 -->
+    <article class="case-file" id="gr-06">
+      <div class="case-head"><span class="code">SIGNAL GR-06</span><h3>ภูมิรัฐศาสตร์ผันผวน</h3></div>
+      <p class="desc">สงครามการค้า ความขัดแย้งภูมิรัฐศาสตร์ และ De-dollarization เขย่าเงินทุนไทยจากภายนอกประเทศ</p>
+      <div class="case-grid">
+        <div class="box-risk"><span class="lbl">ผลกระทบ − ความเสี่ยง</span><p>อัตราแลกเปลี่ยนและดอกเบี้ยผันผวน ต้นทุนระดมทุนต่างประเทศสูงขึ้น SME สายส่งออกสั่นคลอน</p></div>
+        <div class="box-opp"><span class="lbl">ผลกระทบ + โอกาส</span><p>กระจาย Portfolio สินเชื่อหนุน Reshoring/Localization พันธมิตรใหม่ในภูมิภาค</p></div>
+      </div>
+      <div class="rhino-quote"><span class="icon">🦏</span><div><span class="lbl">ทำไมถึงเป็นแรดเทา</span><p>ความขัดแย้งภูมิรัฐศาสตร์เป็นแรดเทาที่ทุกคนมองเห็นมานาน แต่แผนสำรองยังไม่ Robust พอ</p></div></div>
+      <div class="mitigation"><span class="lbl">COUNTERMEASURE.EXE</span>
+        <ul>
+          <li><span>ทำ Scenario Planning หลากสถานการณ์</span></li>
+          <li><span>วาง Hedging Policy ที่ชัดเจน</span></li>
+          <li><span>กระจายแหล่งเงินทุนให้หลากหลาย</span></li>
+          <li><span>ติดตาม Geopolitical Indicator แบบ Real-time</span></li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="closing">อย่าให้<span class="hl">แรดเทา</span>เดินผ่านไปเงียบๆ</div>
+    <div class="credit">
+      จัดทำโดย<br>
+      <span class="names">เก้า · โบว์ · ตั้ม · ตูน</span><br>
+      ฝ่าย AI ธนาคารออมสิน
+      <div class="div">for Enterprise Risk Management (ERM) — 25 สิงหาคม 2026</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // scroll progress bar
+  const progress = document.getElementById('progress');
+  function updateProgress(){
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = scrolled + '%';
+  }
+  document.addEventListener('scroll', updateProgress);
+  updateProgress();
+
+  // reveal on scroll
+  const revealTargets = document.querySelectorAll('.case-file');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  }, {threshold:.12});
+  revealTargets.forEach(el=>io.observe(el));
+
+  // dot nav active state
+  const dots = document.querySelectorAll('.dotnav a');
+  const sections = document.querySelectorAll('.case-file');
+  const navObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        dots.forEach(d=>d.classList.remove('active'));
+        const match = document.querySelector('.dotnav a[href="#'+entry.target.id+'"]');
+        if(match) match.classList.add('active');
+      }
+    });
+  }, {threshold:.4, rootMargin:'-10% 0px -40% 0px'});
+  sections.forEach(s=>navObserver.observe(s));
+
+  // radar blip click -> scroll to case file
+  document.querySelectorAll('.blip').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      const target = document.querySelector(b.getAttribute('data-target'));
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+</script>
+</body>
+</html>
