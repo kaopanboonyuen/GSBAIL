@@ -19,7 +19,7 @@
 #  AUTHOR      : Teerapong Panboonyuen (Kao)
 #  AFFILIATION : GSBAIL — Government Savings Bank AI Lab
 #                (Government Savings Bank, Thailand)
-#  ROLE        : Deputy Director of AI
+#  ROLE        : Vice President of AI
 #  STATUS      : Mockup / Reference Architecture — synthetic data only.
 #                Interest-rate and affordability constants below are
 #                illustrative placeholders, NOT actual GSB policy figures.

@@ -50,7 +50,7 @@ This repository hosts the official public showcase site for the lab — its miss
 **Dr. Teerapong Panboonyuen (Dr. Kao)**
 ดร. ธีรพงศ์ ปานบุญยืน (ดร. เก้า)
 
-**Founding Head of Lab · Deputy Director of AI, Government Savings Bank**
+**Founding Head of Lab · Vice President of AI, Government Savings Bank**
 
 Dr. Kao leads GSBAIL's strategic direction, setting the technical and ethical standards for AI deployed across Thailand's national savings bank — building systems that are rigorously evaluated, transparently governed, and genuinely useful at nationwide scale.
 

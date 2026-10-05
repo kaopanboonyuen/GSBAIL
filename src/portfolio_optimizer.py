@@ -20,7 +20,7 @@
 #  AUTHOR      : Teerapong Panboonyuen (Kao)
 #  AFFILIATION : GSBAIL — Government Savings Bank AI Lab
 #                (Government Savings Bank, Thailand)
-#  ROLE        : Deputy Director of AI
+#  ROLE        : Vice President of AI
 #  STATUS      : Mockup / Reference Architecture — synthetic market data
 #                only. Not investment advice; illustrative engineering
 #                reference for a future GSB robo-advisory product.
