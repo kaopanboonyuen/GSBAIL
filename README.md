@@ -3,14 +3,16 @@
 # 🐕 GSBAIL
 ### Government Savings Bank Artificial Intelligence Laboratory
 
-**Trustworthy · Scalable · Interpretable AI — for every Thai household.**
+**Sovereign AI, engineered for national trust.**
+Trustworthy · Scalable · Interpretable: for every Thai household.
 
-![Status](https://img.shields.io/badge/status-coming%20soon-b8862b?style=flat-square)
-![Launch](https://img.shields.io/badge/launch-August%202026-14295c?style=flat-square)
-![Built with](https://img.shields.io/badge/built%20with-%F0%9F%A4%8D-0e7c66?style=flat-square)
+![Status](https://img.shields.io/badge/status-active-0e7c66?style=flat-square)
+![Established](https://img.shields.io/badge/established-August%202026-14295c?style=flat-square)
+![Programs](https://img.shields.io/badge/flagship%20programs-4-b8862b?style=flat-square)
+![Local-first](https://img.shields.io/badge/AI-local--first-0b1b3a?style=flat-square)
 ![Location](https://img.shields.io/badge/Bangkok-Thailand%20%F0%9F%87%B9%F0%9F%87%AD-0b1b3a?style=flat-square)
 
-[🌐 Live Site](https://kaopanboonyuen.github.io/) · [👤 Head of Lab](https://kaopanboonyuen.github.io/) · [📬 Contact](#-contact)
+[🌐 Live Site](https://kaopanboonyuen.github.io/) · [🤗 Hugging Face](https://huggingface.co/kaopanboonyuen) · [👤 Head of Lab](https://kaopanboonyuen.github.io/) · [📚 Publications](#-publications) · [📬 Contact](#-contact)
 
 </div>
 
@@ -18,23 +20,34 @@
 
 ## 🏛️ About GSBAIL
 
-**GSBAIL** (Government Savings Bank Artificial Intelligence Laboratory) is the newly established AI division of the **Government Savings Bank (GSB)** — one of Thailand's most trusted national financial institutions, serving millions of Thai families for generations.
+**GSBAIL** (Government Savings Bank Artificial Intelligence Laboratory) is the dedicated AI division of the **Government Savings Bank (GSB)**, one of Thailand's most trusted national financial institutions, serving millions of Thai families for generations.
 
-GSBAIL exists for one reason: to build AI that a *national bank* can responsibly stand behind. Not AI for hype, and not AI for a handful of early adopters — AI that is **transparent enough to audit**, **robust enough to scale to millions of customers**, and **clear enough that any Thai citizen can trust the decisions behind it**.
+GSBAIL exists to build AI that a *national bank* can responsibly stand behind: **transparent enough to audit**, **robust enough to scale to millions of customers**, and **clear enough that any Thai citizen can trust the decisions behind it**. Our systems are designed **local-first**: trained, evaluated and served on bank-controlled infrastructure, so sensitive data does not need to leave the organization.
 
-This repository hosts the official public showcase site for the lab — its mission, research direction, leadership, and the products currently in development ahead of our official launch.
+This repository hosts the official public showcase site for the lab: its mission, programs, leadership and publications.
 
-> *"We advance AI that a national bank can stand behind — systems that are transparent enough to audit, robust enough to scale across millions of customers, and precise enough to earn the trust every Thai household places in GSB."*
+> *"We build AI that a national bank can stand behind. Systems transparent enough to audit, robust enough to serve millions of customers, and precise enough to earn the trust every Thai household places in GSB."*
 
 ---
 
-## 🎯 Research Pillars
+## 🚀 Flagship Programs
+
+| # | Program | What it is |
+|---|---------|------------|
+| 01 | 💬 **KaoChat LLM** | A local intelligent assistant powered by an in-house large language model, serving chat on the bank's own infrastructure. |
+| 02 | 🧾 **KaoOCR** | Local document reading and information extraction for financial documents, using a domain-adaptive OCR framework with confidence-aware human review. Processing stays inside the organization. |
+| 03 | 🔬 **Kao AI Research Laboratory (27B)** | Research and fine-tuning of a 27-billion-parameter language model, the foundation for the lab's next generation of in-house models. |
+| 04 | 🌿 **Kao-LEAF Score** | Financial scoring using AI. **GSB-LEAF** (*Learned Embeddings for Automated Feature representation*) learns merchant financial behavior from transaction histories and keeps behavior representation, credit-outcome prediction and lending policy as separate, auditable layers. [Project page](https://kaopanboonyuen.github.io/LEAF) |
+
+---
+
+## 🎯 Principles
 
 | # | Pillar | Focus |
 |---|--------|-------|
-| 01 | 🛡️ **Trustworthy AI** | Rigorous evaluation, fairness auditing, and governance frameworks built for regulated financial systems from day one — not bolted on after deployment. |
-| 02 | 📈 **Scalable Systems** | Infrastructure and model architectures engineered to operate reliably at national scale, across millions of accounts and transactions daily. |
-| 03 | 🔍 **Interpretable Intelligence** | Decisions that can be explained — to regulators, to auditors, and above all, to the customers whose financial lives depend on them. |
+| 01 | 🛡️ **Trustworthy AI** | Rigorous evaluation, fairness auditing and governance built in from day one, not bolted on after deployment. |
+| 02 | 📈 **Scalable Systems** | Architectures and infrastructure engineered to serve national-scale workloads reliably. |
+| 03 | 🔍 **Interpretable Intelligence** | Decisions that can be explained to regulators, auditors and the customers whose financial lives depend on them. |
 
 ---
 
@@ -52,9 +65,9 @@ This repository hosts the official public showcase site for the lab — its miss
 
 **Founding Head of Lab · Vice President of AI, Government Savings Bank**
 
-Dr. Kao leads GSBAIL's strategic direction, setting the technical and ethical standards for AI deployed across Thailand's national savings bank — building systems that are rigorously evaluated, transparently governed, and genuinely useful at nationwide scale.
+Dr. Kao leads GSBAIL's strategy and research direction and is the creator of KaoChat, KaoOCR and the GSB-LEAF scoring framework, setting the technical and ethical standards for AI deployed across Thailand's national savings bank.
 
-🔗 [kaopanboonyuen.github.io](https://kaopanboonyuen.github.io/)
+🔗 [kaopanboonyuen.github.io](https://kaopanboonyuen.github.io/) · 🤗 [huggingface.co/kaopanboonyuen](https://huggingface.co/kaopanboonyuen)
 
 </td>
 </tr>
@@ -62,15 +75,72 @@ Dr. Kao leads GSBAIL's strategic direction, setting the technical and ethical st
 
 ---
 
-## 🧪 Products in Development
+## 🤗 Hugging Face
 
-> 🚧 The lab is in its founding phase. The following directions are under active research and development, with details to be published as GSBAIL officially opens.
+Model releases, checkpoints and research artifacts are published at **[huggingface.co/kaopanboonyuen](https://huggingface.co/kaopanboonyuen)**. Only public, authorized artifacts are released. Customer data and internal documents are never published.
 
-| Product | Category | Status |
-|---|---|---|
-| 🧾 Interpretable Credit Scoring | Credit Intelligence | 🟡 In development |
-| 🚨 Scalable Risk Monitoring | Fraud & Risk Foresight | 🟡 In development |
-| 💬 Conversational Banking Assistant | Customer AI (Thai-language) | 🟡 In development |
+---
+
+## 📚 Publications
+
+> ⚠️ **Not yet published.** The entries below are placeholders marked *in preparation*. Titles marked "working title" may change. Update each entry with the final venue, DOI and URL once the paper is released.
+
+<details>
+<summary><b>GSB-LEAF</b> (in preparation)</summary>
+
+```bibtex
+@unpublished{panboonyuen2026gsbleaf,
+  title  = {{GSB-LEAF}: Learned Embeddings for Automated Feature
+            Representation in Temporal Financial Behavior Modeling},
+  author = {Panboonyuen, Teerapong},
+  year   = {2026},
+  note   = {Manuscript in preparation. Not yet published.},
+  url    = {https://kaopanboonyuen.github.io/LEAF}
+}
+```
+</details>
+
+<details>
+<summary><b>KaoOCR</b> (in preparation)</summary>
+
+```bibtex
+@unpublished{panboonyuen2026kaoocr,
+  title  = {{KaoOCR}: A Domain-Adaptive Local {OCR} Framework for
+            Organization-Specific Document Recognition},
+  author = {Panboonyuen, Teerapong},
+  year   = {2026},
+  note   = {Manuscript in preparation. Not yet published.}
+}
+```
+</details>
+
+<details>
+<summary><b>KaoChat LLM</b> (working title)</summary>
+
+```bibtex
+@unpublished{panboonyuen2026kaochat,
+  title  = {{KaoChat}: A Locally Deployed Large Language Model
+            Assistant for Banking},
+  author = {Panboonyuen, Teerapong},
+  year   = {2026},
+  note   = {Working title. Manuscript in preparation. Not yet published.}
+}
+```
+</details>
+
+<details>
+<summary><b>Kao AI Research Laboratory · 27B</b> (working title)</summary>
+
+```bibtex
+@unpublished{panboonyuen2026kao27b,
+  title  = {Fine-Tuning a 27-Billion-Parameter Language Model
+            for Banking Applications},
+  author = {Panboonyuen, Teerapong},
+  year   = {2026},
+  note   = {Working title. Manuscript in preparation. Not yet published.}
+}
+```
+</details>
 
 ---
 
@@ -78,18 +148,21 @@ Dr. Kao leads GSBAIL's strategic direction, setting the technical and ethical st
 
 - [x] 🎨 Establish GSBAIL public identity & showcase site
 - [x] 👤 Announce founding Head of Lab
+- [x] 🏦 Official lab launch: **August 2026**
+- [x] 🚀 Define four flagship programs (KaoChat, KaoOCR, 27B research, Kao-LEAF)
 - [ ] 🧑‍💻 Assemble founding research & engineering team
-- [ ] 🏦 Official lab launch — **August 2026**
-- [ ] 🚀 First product releases
+- [ ] 📄 Publish first research papers
+- [ ] 🤗 Release first public model artifacts
 
 ---
 
 ## 🛠️ Tech Stack
 
-This site is intentionally simple — a single self-contained page, fast to load and easy to maintain as the lab grows:
+The site is intentionally simple: a single self-contained page that is fast to load and easy to maintain.
 
-- 🧱 **HTML5 + CSS3** — no framework, no build step
-- ⚡ **Vanilla JavaScript** — scroll reveals via `IntersectionObserver`
+- 🧱 **HTML5 + CSS3**: no framework, no build step; automatic light/dark theming
+- ⚡ **Vanilla JavaScript**: scroll reveals (`IntersectionObserver`), an interactive `<canvas>` network animation and one-click BibTeX copy
+- ♿ Respects `prefers-reduced-motion`, keyboard-focus friendly, responsive down to phone width
 - 🔤 **Space Grotesk**, **Inter**, **JetBrains Mono** (Google Fonts)
 - 📄 Hosted on **GitHub Pages**
 
@@ -97,10 +170,11 @@ This site is intentionally simple — a single self-contained page, fast to load
 
 ```
 .
-├── index.html    # The entire site — single file, no dependencies to build
+├── index.html    # The entire site: single file, no dependencies to build
+├── img/          # Profile photo and site images
 ├── src/          # GSBAIL AI project mockups (reference architectures)
 │   ├── mule_account_detection/
-│   │   └── train.py              # Mule account (บัญชีม้า) detection — graph + behavioral anomaly model
+│   │   └── train.py              # Mule account (บัญชีม้า) detection: graph + behavioral anomaly model
 │   ├── ocr_bank_documents/
 │   │   └── ocr_pipeline.py       # Hybrid OCR + LLM vision for printed & handwritten bank documents
 │   ├── credit_scoring/
@@ -114,7 +188,7 @@ This site is intentionally simple — a single self-contained page, fast to load
 
 ## ▶️ Running Locally
 
-No build tools required — just open the file, or serve it locally:
+No build tools required. Serve the folder locally:
 
 ```bash
 git clone https://github.com/<your-org>/gsbail.git
@@ -127,7 +201,7 @@ python3 -m http.server 8000
 
 ## 🇹🇭 Why This Matters
 
-The Government Savings Bank has served the Thai people for over a century. As GSB steps into the era of artificial intelligence, GSBAIL carries a responsibility beyond building good technology — it carries the responsibility of building AI **worthy of national trust**.
+The Government Savings Bank has served the Thai people for over a century. As GSB steps into the era of artificial intelligence, GSBAIL carries a responsibility beyond building good technology: the responsibility of building AI **worthy of national trust**.
 
 Every model, every system, every decision GSBAIL ships is held to one standard: would a Thai family, trusting GSB with their savings, be comfortable knowing this is how the decision was made?
 
@@ -137,9 +211,10 @@ That's the bar. That's why GSBAIL exists.
 
 ## 📬 Contact
 
-For inquiries, partnerships, or collaboration opportunities:
+For inquiries, partnerships or collaboration opportunities:
 
 - 🔗 **Head of Lab:** [kaopanboonyuen.github.io](https://kaopanboonyuen.github.io/)
+- 🤗 **Hugging Face:** [huggingface.co/kaopanboonyuen](https://huggingface.co/kaopanboonyuen)
 - 🏦 **Institution:** Government Savings Bank (GSB), Bangkok, Thailand
 
 ---
