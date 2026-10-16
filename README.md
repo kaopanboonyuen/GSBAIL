@@ -86,11 +86,11 @@ Model releases, checkpoints and research artifacts are published at **[huggingfa
 > ⚠️ **Not yet published.** The entries below are placeholders marked *in preparation*. Titles marked "working title" may change. Update each entry with the final venue, DOI and URL once the paper is released.
 
 <details>
-<summary><b>GSB-LEAF</b> (in preparation)</summary>
+<summary><b>KaoLEAF</b> (in preparation)</summary>
 
 ```bibtex
 @unpublished{panboonyuen2026gsbleaf,
-  title  = {{GSB-LEAF}: Learned Embeddings for Automated Feature
+  title  = {{KaoLEAF}: Learned Embeddings for Automated Feature
             Representation in Temporal Financial Behavior Modeling},
   author = {Panboonyuen, Teerapong},
   year   = {2026},
@@ -174,7 +174,7 @@ The site is intentionally simple: a single self-contained page that is fast to l
 ├── img/          # Profile photo and site images
 ├── src/          # GSBAIL AI project mockups (reference architectures)
 │   ├── mule_account_detection/
-│   │   └── train.py              # Mule account (บัญชีม้า) detection: graph + behavioral anomaly model
+│   │   └── train.py              # Mule account detection: graph + behavioral anomaly model
 │   ├── ocr_bank_documents/
 │   │   └── ocr_pipeline.py       # Hybrid OCR + LLM vision for printed & handwritten bank documents
 │   ├── credit_scoring/
@@ -184,17 +184,6 @@ The site is intentionally simple: a single self-contained page that is fast to l
 │   └── portfolio_optimization/
 │       └── portfolio_optimizer.py    # AI-assisted robo-advisory portfolio construction
 └── README.md
-```
-
-## ▶️ Running Locally
-
-No build tools required. Serve the folder locally:
-
-```bash
-git clone https://github.com/<your-org>/gsbail.git
-cd gsbail
-python3 -m http.server 8000
-# then visit http://localhost:8000
 ```
 
 ---
