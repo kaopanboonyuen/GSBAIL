@@ -37,7 +37,7 @@ This repository hosts the official public showcase site for the lab: its mission
 | 01 | 💬 **KaoChat LLM** | A local intelligent assistant powered by an in-house large language model, serving chat on the bank's own infrastructure. |
 | 02 | 🧾 **KaoOCR** | Local document reading and information extraction for financial documents, using a domain-adaptive OCR framework with confidence-aware human review. Processing stays inside the organization. |
 | 03 | 🔬 **Kao AI Research Laboratory (27B)** | Research and fine-tuning of a 27-billion-parameter language model, the foundation for the lab's next generation of in-house models. |
-| 04 | 🌿 **Kao-LEAF Score** | Financial scoring using AI. **GSB-LEAF** (*Learned Embeddings for Automated Feature representation*) learns merchant financial behavior from transaction histories and keeps behavior representation, credit-outcome prediction and lending policy as separate, auditable layers. [Project page](https://kaopanboonyuen.github.io/LEAF) |
+| 04 | 🌿 **KaoLEAF Score** | Financial scoring using AI. **KaoLEAF** (*Knowledge-Augmented Optimization and Learned Embeddings for Automated Feature Representation*) learns merchant financial behavior from transaction histories and keeps behavior representation, credit-outcome prediction and lending policy as separate, auditable layers. [Project page](https://kaopanboonyuen.github.io/LEAF) |
 
 ---
 
@@ -89,9 +89,9 @@ Model releases, checkpoints and research artifacts are published at **[huggingfa
 <summary><b>KaoLEAF</b> (in preparation)</summary>
 
 ```bibtex
-@unpublished{panboonyuen2026gsbleaf,
-  title  = {{KaoLEAF}: Learned Embeddings for Automated Feature
-            Representation in Temporal Financial Behavior Modeling},
+@unpublished{panboonyuen2026kaoleaf,
+  title  = {{KaoLEAF}: Knowledge-Augmented Optimization and
+            Learned Embeddings for Automated Feature Representation},
   author = {Panboonyuen, Teerapong},
   year   = {2026},
   note   = {Manuscript in preparation. Not yet published.},
