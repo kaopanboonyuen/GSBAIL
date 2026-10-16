@@ -134,6 +134,42 @@ html{-webkit-text-size-adjust:100%;overflow-x:clip}body{overflow-x:clip;-webkit-
 }
 @media(max-width:480px){.lk a[href="#hf"]{display:none}h1{font-size:clamp(4rem,22vw,6rem)}.sts{gap:14px}}
 @media(hover:none){.pj:hover h3{color:inherit;background-size:0 3px}.btn:hover{transform:none;background:inherit;color:inherit}.btn.p:hover{background:var(--pen);border-color:var(--pen);color:#fff}}
+
+/* ===== GSBAIL moments: Day 1 + AI in Banking talk ===== */
+.cmd{font:500 .78rem/1.7 'JetBrains Mono',monospace;color:var(--mut);margin:-14px 0 36px;display:flex;flex-wrap:wrap;gap:4px 16px}
+.cmd b{color:var(--pen);font-weight:500}.cmd em{font-style:normal;color:var(--blue)}
+.galw{container-type:inline-size}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:calc((100cqw - 44px)/3*1.42);gap:22px}
+.sn{position:relative;margin:0;background:var(--card);border:1.5px solid var(--ink);border-radius:4px;padding:8px 8px 0;box-shadow:6px 6px 0 var(--pen);transform:rotate(var(--r,0deg));transition:transform .3s;display:flex;flex-direction:column;min-height:0}
+.sn img{flex:1 1 0;height:0;min-height:0;width:100%;object-fit:cover;border-radius:2px;display:block;background:var(--line)}
+.sn figcaption{font:700 1.2rem/1 Caveat,cursive;padding:9px 2px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.sn figcaption span{font:500 .6rem 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.sn::before{content:"";position:absolute;top:-11px;left:50%;width:76px;height:22px;margin-left:-38px;transform:rotate(-3deg);background:color-mix(in srgb,var(--pen) 28%,transparent);border:1px dashed color-mix(in srgb,var(--pen) 55%,transparent);z-index:2}
+.sn:hover{transform:rotate(0) translateY(-5px)}
+.w2{grid-column:span 2}
+.say{font:500 clamp(1.5rem,3vw,2.1rem)/1.25 Caveat,cursive;max-width:760px;margin:44px 0 0}
+.say em{font-style:normal;color:var(--blue);box-shadow:inset 0 -.32em 0 color-mix(in srgb,var(--blue) 20%,transparent)}
+.tk{display:grid;grid-template-columns:1.3fr 1fr;gap:34px;align-items:stretch;margin-bottom:34px}
+.tk .sn img{flex:none;height:auto;aspect-ratio:3/2}
+.tk .sn{align-self:start}
+.term{background:#1a0a13;color:#fbe9f3;border:1.5px solid #3a1a2b;border-radius:8px 22px 8px 20px;box-shadow:6px 6px 0 var(--pen);overflow:hidden;display:flex;flex-direction:column}
+.term .bar{display:flex;align-items:center;gap:7px;padding:11px 16px;border-bottom:1px solid #3a1a2b;font:500 .64rem 'JetBrains Mono',monospace;letter-spacing:.1em;color:#a07c91;text-transform:uppercase}
+.term .bar i{width:10px;height:10px;border-radius:50%;background:#3a1a2b}.term .bar i:first-child{background:#ff4fae}.term .bar i:nth-child(2){background:#f0b94a}.term .bar span{margin-left:auto}
+.term pre{flex:1;padding:20px 20px 24px;font:500 .8rem/1.9 'JetBrains Mono',monospace;white-space:pre-wrap;word-break:break-word}
+.term .c{color:#a07c91}.term .k{color:#ff7cc4}.term .v{color:#f0b94a}.term a{color:#ff7cc4;border-bottom:1px dashed #ff7cc4}.term a:hover{color:#fff}
+.term .cur{display:inline-block;width:.6em;height:1.05em;background:#ff4fae;vertical-align:-.18em;animation:bl 1.1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.strip .sn img{flex:none;height:auto;aspect-ratio:3/2}
+@media(max-width:820px){
+ .gal{grid-template-columns:1fr 1fr;grid-auto-rows:auto;gap:24px 16px}
+ .sn img{flex:none;height:auto;aspect-ratio:var(--ar,3/2)}
+ .tk{grid-template-columns:1fr;gap:30px}
+ .strip{grid-template-columns:1fr 1fr;gap:24px 16px}.strip .sn:first-child{grid-column:span 2}
+ .cmd{margin-top:-8px}.say{margin-top:34px}
+}
+@media(max-width:480px){.term pre{font-size:.72rem;padding:16px}.sn figcaption{font-size:1.05rem}.sn{box-shadow:4px 4px 0 var(--pen)}}
+@media(hover:none){.sn:hover{transform:rotate(var(--r,0deg))}}
 </style>
 </head>
 <body>
@@ -205,6 +241,43 @@ html{-webkit-text-size-adjust:100%;overflow-x:clip}body{overflow-x:clip;-webkit-
 <div class="th">ดร. ธีรพงศ์ ปานบุญยืน (ดร. เก้า) · Vice President of AI</div>
 <p>Dr. Kao leads GSBAIL's strategy and research direction, setting the technical and ethical standards for AI across Thailand's national savings bank. Creator of KaoChat, KaoOCR and the GSB-LEAF framework, with a focus on systems that are rigorously evaluated, transparently governed and genuinely useful at scale.</p>
 <a class="btn" href="https://kaopanboonyuen.github.io/" target="_blank" rel="noopener">Full profile ↗</a><a class="btn" href="https://huggingface.co/kaopanboonyuen" target="_blank" rel="noopener">🤗 Hugging Face ↗</a></div>
+</div></section>
+
+<section id="day1"><div class="wrap">
+<div class="hd rv"><h2>My Day 1 <em>at GSB.</em></h2><span class="scrawl">Mon · 10 Aug 2026 ✿</span></div>
+<div class="cmd rv"><span><b>$</b> git commit -m "day 1: hello, world"</span><span><em>[main 0x01]</em> welcome_party <em>100%</em> ✓</span></div>
+<div class="galw rv"><div class="gal">
+<figure class="sn w2" style="--r:-1.2deg;--ar:4/3"><img src="gsbail_img/my_day_1_at_gsb/IMG_0596.JPG" alt="The GSB team gathering in the corridor to welcome Dr. Kao on his first day" loading="lazy" decoding="async" style="object-position:50% 55%"><figcaption>the welcome crew<span>fig.01</span></figcaption></figure>
+<figure class="sn" style="--r:1.8deg;--ar:3/4"><img src="gsbail_img/my_day_1_at_gsb/IMG_0602.JPG" alt="Dr. Kao with his boss, holding a smiling flower balloon" loading="lazy" decoding="async"><figcaption>my boss &amp; me · LGTM ✓<span>fig.02</span></figcaption></figure>
+<figure class="sn" style="--r:-1.6deg;--ar:3/4"><img src="gsbail_img/my_day_1_at_gsb/IMG_0603.JPG" alt="Team members smiling in the office, some in inflatable costumes" loading="lazy" decoding="async"><figcaption>good vibes: loaded ✓<span>fig.03</span></figcaption></figure>
+<figure class="sn w2" style="--r:1.2deg;--ar:4/3"><img src="gsbail_img/my_day_1_at_gsb/IMG_0597.JPG" alt="The whole team posing around the meeting table, with a green monster costume" loading="lazy" decoding="async"><figcaption>the whole squad<span>fig.04</span></figcaption></figure>
+</div></div>
+<p class="say rv">Day one, and the whole team showed up to say hello. Thank you, boss and teammates ♡ I'll keep building good AI, release after release: <em>our own local, modern AI.</em></p>
+</div></section>
+
+<section id="talk"><div class="wrap">
+<div class="hd rv"><h2>AI in Banking, <em>live.</em></h2><span class="scrawl">Tue · 6 Oct 2026 ★</span></div>
+<p class="note2 rv">Speaking for GSB to a banking delegation from Sri Lanka on their study visit to the Head Office.</p>
+<div class="tk rv">
+<figure class="sn" style="--r:-1.2deg"><img src="gsbail_img/my_talk_ai_in_banking/GSB_AI_Event_02.jpg" alt="Dr. Teerapong Panboonyuen speaking to the Sri Lankan delegation" loading="lazy" decoding="async" style="object-position:50% 30%"><figcaption>AI in Banking, mid-talk<span>fig.01</span></figcaption></figure>
+<div class="term"><div class="bar"><i></i><i></i><i></i><span>talk.yaml</span></div>
+<pre><span class="c"># study visit · GSB Head Office</span>
+<span class="k">topic</span>:    <span class="v">"AI in Banking"</span>
+<span class="k">date</span>:     <span class="v">2026-10-06</span> <span class="c"># Tue</span>
+<span class="k">guests</span>:   <span class="v">"Sri Lanka delegation"</span>
+<span class="k">program</span>:  <span class="v">"Branch Leadership"</span>
+<span class="k">venue</span>:    <span class="v">"Ramjitti Room"</span>
+<span class="k">stance</span>:   <span class="v">local-first</span> ✺
+<span class="k">status</span>:   <span class="v">delivered</span> ✓
+
+<span class="c">$</span> echo <span class="v">"ayubowan 🇱🇰"</span>
+<span class="c">$</span> open <a href="https://www.gsb.or.th/news/%E0%B8%AD%E0%B8%AD%E0%B8%A1%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B8%95%E0%B9%89%E0%B8%AD%E0%B8%99%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B8%84%E0%B8%93%E0%B8%B0%E0%B9%80%E0%B8%88%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%99/" target="_blank" rel="noopener">gsb.or.th/news ↗</a> <span class="cur"></span></pre></div>
+</div>
+<div class="strip rv">
+<figure class="sn" style="--r:1.4deg"><img src="gsbail_img/my_talk_ai_in_banking/GSB_AI_Event_01.jpg" alt="Group photo of the Sri Lankan delegation and GSB hosts on the staircase" loading="lazy" decoding="async"><figcaption>delegation &amp; hosts<span>fig.02</span></figcaption></figure>
+<figure class="sn" style="--r:-1.2deg"><img src="gsbail_img/my_talk_ai_in_banking/GSB_AI_Event_03.jpg" alt="Delegates listening in the Ramjitti meeting room" loading="lazy" decoding="async"><figcaption>Ramjitti Room<span>fig.03</span></figcaption></figure>
+<figure class="sn" style="--r:1deg"><img src="gsbail_img/my_talk_ai_in_banking/GSB_AI_Event_04.jpg" alt="Wide view of the full meeting room during the session" loading="lazy" decoding="async"><figcaption>full house<span>fig.04</span></figcaption></figure>
+</div>
 </div></section>
 
 <section id="cite"><div class="wrap">
