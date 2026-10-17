@@ -95,7 +95,7 @@ Model releases, checkpoints and research artifacts are published at **[huggingfa
   author = {Panboonyuen, Teerapong},
   year   = {2026},
   note   = {Manuscript in preparation. Not yet published.},
-  url    = {https://kaopanboonyuen.github.io/LEAF}
+  url    = {https://kaopanboonyuen.github.io/KaoLEAF}
 }
 ```
 </details>
