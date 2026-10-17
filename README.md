@@ -90,7 +90,7 @@ Model releases, checkpoints and research artifacts are published at **[huggingfa
 
 ```bibtex
 @unpublished{panboonyuen2026kaoleaf,
-  title  = {{KaoLEAF}: Knowledge-Augmented Optimization and
+  title  = {KaoLEAF: Knowledge-Augmented Optimization and
             Learned Embeddings for Automated Feature Representation},
   author = {Panboonyuen, Teerapong},
   year   = {2026},
@@ -105,7 +105,7 @@ Model releases, checkpoints and research artifacts are published at **[huggingfa
 
 ```bibtex
 @unpublished{panboonyuen2026kaoocr,
-  title  = {{KaoOCR}: A Domain-Adaptive Local {OCR} Framework for
+  title  = {KaoOCR: A Domain-Adaptive Local OCR Framework for
             Organization-Specific Document Recognition},
   author = {Panboonyuen, Teerapong},
   year   = {2026},
@@ -119,7 +119,7 @@ Model releases, checkpoints and research artifacts are published at **[huggingfa
 
 ```bibtex
 @unpublished{panboonyuen2026kaochat,
-  title  = {{KaoChat}: A Locally Deployed Large Language Model
+  title  = {KaoChat: A Locally Deployed Large Language Model
             Assistant for Banking},
   author = {Panboonyuen, Teerapong},
   year   = {2026},
