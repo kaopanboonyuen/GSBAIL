@@ -425,12 +425,12 @@ d:{sky:['#16070f','#1d0b1b','#2a1030','#3b1745','#52205a','#6b2a6a'],sun:'#fff1c
 let s,w,h,gy,P=PL.l,dk=false,T=0,last=0,fc=0,coins=[],le=[-1,-1];
 const R=(x,y,a,b,c)=>{cx.fillStyle=c;cx.fillRect(Math.round(x),Math.round(y),a,b)};
 const INK='#2b0b1d';
-function rs(){s=innerWidth<700?3:4;w=Math.ceil(hero.clientWidth/s);h=Math.ceil(hero.clientHeight/s);gy=h-14;cv.width=w;cv.height=h;const t=cv.style;t.inset='auto';t.left=t.top='0';t.width=w*s+'px';t.height=h*s+'px';cx.imageSmoothingEnabled=false}
+function rs(){s=innerWidth<700?3:4;w=Math.ceil(hero.clientWidth/s);h=Math.ceil(hero.clientHeight/s);gy=h-14;cv.width=w;cv.height=h;const t=cv.style;t.inset='auto';t.left='0';t.bottom='0';t.width=w*s+'px';t.height=h*s+'px';cx.imageSmoothingEnabled=false}
 function disc(x,y,r,c){for(let d=-r;d<=r;d++){const q=Math.round(Math.sqrt(r*r-d*d+.5));R(x-q,y+d,q*2+1,1,c)}}
 function cloud(x,y,k){R(x+3*k,y,5*k,k,P.cl);R(x+k,y+k,11*k,k,P.cl);R(x,y+2*k,14*k,k,P.cl);R(x,y+3*k,14*k,k,P.cl2)}
 function mt(b,a,f,ph,c,sn,dr){const th=b-a*.78;for(let x=0;x<w;x++){const u=(x+T*dr)*f+ph,t=Math.round(b-a*(.5+.32*Math.sin(u)+.18*Math.sin(u*2.7+1.3)));R(x,t,1,gy-t,c);if(sn&&t<th)R(x,t,1,Math.min(5,Math.round(th-t)+1),sn)}}
 function tree(x,ph){const rows=[6,10,14,16,16,14,10],n=rows.length;R(x-1,gy-7,3,7,P.tr);for(let i=0;i<n;i++){const y=gy-7-(n-i)*2,o=Math.round(Math.sin(T*1.5+ph)*1.7*(n-i)/n),wd=rows[i];R(x-wd/2+o,y,wd,2,P.tl);R(x-wd/2+o+1,y,Math.max(2,wd/4|0),2,P.tl2)}const o=Math.round(Math.sin(T*1.5+ph)*1.2);R(x-3+o,gy-14,1,1,'#ff4f6e');R(x+3+o,gy-18,1,1,'#ff4f6e')}
-function pp(x,y,o){const lf=o.walk?Math.floor(T*5)%2:0,b=o.walk?lf:0,yy=y-b,ik=INK;
+function pp(x,y,o){if(o.walk)R(x-4,y,9,1,P.d2);const lf=o.walk?Math.floor(T*5)%2:0,b=o.walk?lf:0,yy=y-b,ik=INK;
 [-3,1].forEach((dx,i)=>{const a=o.walk?(i?1-lf:lf):0;R(x+dx,y-2+a,2,2-a,o.pa)});
 R(x-3,yy-7,6,5,o.sh);if(o.ap)R(x-2,yy-5,4,3,P.wh);
 R(x-5,yy-6,2,3,o.sh);R(x-5,yy-3,2,1,o.sk);
@@ -452,8 +452,8 @@ function pig(x,y){const b=Math.round(Math.abs(Math.sin(T*8))*2),p='#ff8fc4',q='#
 R(x-5,y-8-b,10,6,p);R(x-4,y-9-b,8,1,p);R(x-4,y-2-b,8,1,p);R(x+5,y-6-b,2,3,q);R(x+5,y-5-b,1,1,'#b3345f');R(x+1,y-11-b,2,2,q);R(x+3,y-7-b,1,1,INK);R(x-2,y-9-b,3,1,'#b3345f');
 R(x-4,y-2-b,2,2+b,q);R(x+2,y-2-b,2,2+b,q);R(x-6,y-7-b,1,2,q);
 R(x-1,y-13-b-Math.floor(T*4)%2,3,3,'#ffd23f');R(x,y-12-b-Math.floor(T*4)%2,1,1,'#fff08a')}
-const GL={L:'100100100100111',M:'101111101101101',O:'111101101101111',C:'111100100100111',R:'110101110101101'};
-function sign(x,t){R(x-8,gy-35,17,8,'#8b5a3c');R(x-7,gy-34,15,6,'#b9764a');[...t].forEach((ch,i)=>{const g=GL[ch];for(let k=0;k<15;k++)if(g[k]==='1')R(x-6+i*4+k%3,gy-33+(k/3|0)*1,1,1,'#fff')});R(x-6,gy-27,1,1,'#8b5a3c');R(x+6,gy-27,1,1,'#8b5a3c')}
+const GL={K:'101101110101101',a:'000111001111111',o:'000111101101111',L:'100100100100111',M:'101111101101101',O:'111101101101111',C:'111100100100111',R:'110101110101101'};
+function sign(x,t){const n=[...t].length,ow=n*4+3,ox=x-(ow>>1);R(ox,gy-35,ow,8,'#8b5a3c');R(ox+1,gy-34,ow-2,6,'#b9764a');[...t].forEach((ch,i)=>{const g=GL[ch];if(!g)return;for(let k=0;k<15;k++)if(g[k]==='1')R(ox+2+i*4+k%3,gy-33+(k/3|0),1,1,'#fff')});R(ox+3,gy-27,1,1,'#8b5a3c');R(ox+ow-4,gy-27,1,1,'#8b5a3c')}
 function chedi(x){const by=gy-8,a='#f0b94a',b='#ffe08a',c='#c98a1f';R(x-6,by-3,13,3,c);R(x-5,by-6,11,3,a);R(x-4,by-9,9,3,c);R(x-3,by-12,7,3,a);R(x-2,by-15,5,3,c);R(x-1,by-18,3,3,a);R(x,by-23,1,5,a);R(x-4,by-8,2,1,b);R(x-2,by-14,1,1,b);if(Math.floor(T*2)%2)R(x,by-25,1,1,'#fff08a')}
 function dog(x,y){const f=Math.floor(T*6)%2,c='#d99a68',e='#8b5a3c';R(x-5,y-6,9,4,c);R(x+3,y-9,5,5,c);R(x+3,y-10,2,3,e);R(x+6,y-8,1,1,INK);R(x+8,y-7,1,1,INK);R(x+2,y-5,2,1,'#ED058D');
 R(x-4,y-2+f,2,2-f,e);R(x+2,y-3+f*1,2,3-f,e);R(x-6,y-8+f,1,3,c);R(x-5,y-2,1,2-f,e)}
@@ -472,8 +472,8 @@ for(let x=0;x<w;x+=6)R(x,gy+5+(x/6%2)*3,2,1,P.d2);
 for(let x=3;x<w;x+=7)R(x+Math.floor(T*2+x)%2,gy-1,1,1,P.g2);
 [[.03,0],[.33,2],[.6,4],[.94,1]].forEach(t=>tree(Math.round(w*t[0]),t[1]));
 ['#ff4fae','#ffd23f','#ffffff'].forEach((c,j)=>{for(let x=11+j*9;x<w;x+=29){R(x,gy-2,1,2,P.tl);R(x-1+Math.floor(T*2+x)%2,gy-4,3,2,c)}});
-stall(Math.round(w*.17),0,'#ED058D',{sk:'#ffd9b8',hr:'#3a2418',sh:'#ff6fb8',pa:'#7a5568',hat:'#e8c067'},'LLM');
-stall(Math.round(w*.8),1,'#14b8a6',{sk:'#e8b48a',hr:'#2b0b1d',sh:'#4fc3f7',pa:'#3a4a7a'},'OCR');
+stall(Math.round(w*.17),0,'#ED058D',{sk:'#ffd9b8',hr:'#3a2418',sh:'#ff6fb8',pa:'#7a5568',hat:'#e8c067'},'KaoLLM');
+stall(Math.round(w*.8),1,'#14b8a6',{sk:'#e8b48a',hr:'#2b0b1d',sh:'#4fc3f7',pa:'#3a4a7a'},'KaoOCR');
 pp(((T*6+30)%(w+40))-20,gy+5,{walk:true,sk:'#ffd9b8',hr:'#2b0b1d',sh:'#ED058D',pa:'#2b3a6b',gl:true});
 pp(w+20-((T*5+60)%(w+40)),gy+9,{walk:true,sk:'#c98f6b',hr:'#2b0b1d',sh:'#ffd23f',pa:'#4f6bed'});
 dog(((T*9+w+18)%(w+40))-20,gy+7);pig(((T*9)%(w+40))-20,gy+7);
@@ -482,7 +482,11 @@ coins=coins.filter(c=>T-c.t<1.6);
 coins.forEach(c=>{const a=T-c.t,ww=[3,2,1,2][Math.floor(a*8)%4];cx.globalAlpha=Math.max(0,a>1.1?1-(a-1.1)/.5:1);R(c.x-(ww>>1),c.y-a*14,ww,3,'#ffd23f');R(c.x,c.y-a*14+1,1,1,'#fff08a');cx.globalAlpha=1})}
 function chk(){dk=getComputedStyle(root).getPropertyValue('--bg').toLowerCase().includes('16070f');P=PL[dk?'d':'l']}
 function loop(now){requestAnimationFrame(loop);if(!vis||now-last<66)return;last=now;T=now/1000;if(fc++%12===0)chk();frame()}
-rs();chk();addEventListener('resize',()=>{rs();if(RM)frame()});
+rs();chk();
+let rz=0;const re=()=>{cancelAnimationFrame(rz);rz=requestAnimationFrame(()=>{const k=innerWidth<700?3:4;if(k!==s||Math.ceil(hero.clientWidth/k)!==w||Math.ceil(hero.clientHeight/k)!==h){rs();frame()}})};
+if('ResizeObserver' in window)new ResizeObserver(re).observe(hero);
+addEventListener('resize',re);addEventListener('load',re);addEventListener('orientationchange',re);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(re);
 hero.addEventListener('pointerdown',e=>{if(RM)return;const r=cv.getBoundingClientRect();if(coins.length<30)coins.push({x:(e.clientX-r.left)/s,y:(e.clientY-r.top)/s,t:T})});
 if(RM){frame();const t=document.getElementById('th');if(t)t.addEventListener('click',()=>setTimeout(()=>{chk();frame()},60))}else requestAnimationFrame(loop)})();
 /* tiny 8-bit mascots for section headers */
