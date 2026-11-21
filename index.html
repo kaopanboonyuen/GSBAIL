@@ -217,7 +217,9 @@ html{-webkit-text-size-adjust:100%;overflow-x:clip}body{overflow-x:clip;-webkit-
 @media(max-width:1100px){.wrap{width:min(1080px,100% - 32px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px))}}
 @media(max-width:820px){
  .lk{flex:1;justify-content:flex-end}
- .sg .sn:first-child,.strip .sn:last-child{grid-column:span 2!important}
+ .sg .sn:first-child{grid-column:span 2!important}
+ .strip .sn:first-child{grid-column:span 2}
+ .strip .sn:not(:first-child){grid-column:span 1}
  .sc-hero .sn{box-shadow:6px 6px 0 var(--pen)}
 }
 @media(max-width:560px){
