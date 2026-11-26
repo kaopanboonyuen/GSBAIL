@@ -268,21 +268,9 @@ html{-webkit-text-size-adjust:100%;overflow-x:clip}body{overflow-x:clip;-webkit-
 .ko-term pre{min-height:21.5rem}
 .ko-term .g{color:#7ee0a0}.ko-term .r{color:#ff8a9a}.ko-term .y{color:#f0b94a}
 .ko-note{color:var(--mut);max-width:680px;margin-top:30px;font-size:.94rem}
-@media(max-width:820px){.ko-vs{grid-template-columns:1fr auto}.ko-pair{grid-column:1/-1;order:3}.ko-ch,
-.ko-w{margin-top:48px;background:var(--card);border:1.5px solid var(--ink);border-radius:6px 20px 8px 18px;box-shadow:6px 6px 0 var(--ink);padding:6px 22px}
-.ko-wr{display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap;padding:12px 0}
-.ko-wr+.ko-wr{border-top:1px dashed var(--line)}
-.ko-wn{flex:0 0 150px;display:flex;align-items:baseline;gap:8px}
-.ko-wn b{font:400 1.7rem/1 'Instrument Serif',serif}
-.ko-wn small{font:500 .62rem 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
-.ko-wr a{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;min-height:34px;border:1.5px solid var(--ink);border-radius:99px;font:500 .8rem 'JetBrains Mono',monospace;transition:transform .2s,background .2s,color .2s}
-.ko-wr a:hover{transform:translateY(-2px) rotate(-1.5deg);background:var(--ink);color:var(--bg)}
-.ko-wr a.new{background:var(--pen);border-color:var(--pen);color:#fff}
-.ko-wr a.new:hover{background:var(--ink);border-color:var(--ink)}
-.ko-wr a em{font:700 .95rem Caveat,cursive;font-style:normal;opacity:.85}
-.ko-wr a.new em{color:#fff}
+@media(max-width:820px){.ko-vs{grid-template-columns:1fr auto}.ko-pair{grid-column:1/-1;order:3}.ko-ch{grid-template-columns:1fr;gap:34px}.ko-term pre{min-height:19rem}}
 .ko-hero{position:relative;margin:0 0 30px;padding:6px 0 0}
-.ko-t{font:400 clamp(5.4rem,22vw,15.5rem)/.88 'Instrument Serif',serif;letter-spacing:-.045em;display:inline-block;position:relative;white-space:nowrap}
+.ko-t{font:400 clamp(5.6rem,25vw,17rem)/.88 'Instrument Serif',serif;letter-spacing:-.045em;display:inline-block;position:relative;white-space:nowrap}
 .ko-t b{font-weight:inherit;display:inline-block;opacity:0;transform:translateY(.45em) rotate(9deg);transition:opacity .7s,transform .9s cubic-bezier(.2,.9,.3,1.3);transition-delay:calc(var(--i)*.1s + .15s)}
 .on .ko-t b{opacity:1;transform:none}
 .ko-k{color:transparent;-webkit-text-stroke:2px var(--ink)}
@@ -301,9 +289,34 @@ html{-webkit-text-size-adjust:100%;overflow-x:clip}body{overflow-x:clip;-webkit-
 .ko-sp{position:absolute;color:var(--blue);font-size:1.6rem;opacity:0;animation:kotw 3s ease-in-out infinite}
 .on .ko-sp{opacity:1}
 @keyframes kotw{0%,100%{transform:scale(.5) rotate(0)}50%{transform:scale(1.15) rotate(25deg)}}
-@media(max-width:820px){.ko-wn{flex:1 0 100%}.ko-k{-webkit-text-stroke-width:1.5px}}
+@media(max-width:820px){.ko-k{-webkit-text-stroke-width:1.5px}}
 @media(max-width:820px){.ko-sts{gap:12px;margin-bottom:44px}.ko-sts b{font-size:clamp(2.2rem,10.5vw,4rem)}.ko-sts em{font-size:.56rem;letter-spacing:.04em;line-height:1.35;margin-top:4px}.ko-sts span{display:block;font-size:1rem;line-height:1.15;margin-top:2px}}
 @media(max-width:360px){.ko-sts b{font-size:2rem}.ko-sts span{font-size:.92rem}}
+
+.ko-w{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px 16px}
+.ko-w .cap{grid-column:1/-1;font:700 1.35rem Caveat,cursive;color:var(--blue);transform:rotate(-1.5deg);transform-origin:left}
+.ko-b{position:relative;display:flex;align-items:center;gap:10px;padding:10px 14px 10px 12px;min-height:58px;background:var(--card);border:1.5px solid var(--ink);border-radius:6px 18px 8px 16px;box-shadow:4px 4px 0 var(--ink);transition:transform .2s,box-shadow .2s,background .2s}
+.ko-b:hover,.ko-b:focus-visible{transform:translate(-2px,-2px) rotate(-1.2deg);box-shadow:7px 7px 0 var(--pen);background:color-mix(in srgb,var(--pen) 8%,var(--card))}
+.ko-b.new{box-shadow:4px 4px 0 var(--pen)}
+.ko-b.new:hover{box-shadow:7px 7px 0 var(--ink)}
+.ko-b .hf2{font-size:1.5rem;line-height:1;flex:none;transition:transform .3s}
+.ko-b:hover .hf2{transform:rotate(-12deg) scale(1.15)}
+.ko-b div{min-width:0;line-height:1.05}
+.ko-b small{display:block;font:500 .58rem 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);white-space:nowrap}
+.ko-b strong{font:400 1.75rem/1 'Instrument Serif',serif}
+.ko-b .ar{margin-left:auto;font:500 .9rem 'JetBrains Mono',monospace;color:var(--mut)}
+.ko-b i{position:absolute;top:-11px;right:10px;font:700 1rem/1 Caveat,cursive;font-style:normal;background:var(--pen);color:#fff;padding:2px 10px;border-radius:99px;transform:rotate(4deg)}
+.ko-run{position:absolute;left:0;bottom:.05em;width:100%;height:0;pointer-events:none}
+.ko-run svg{position:absolute;left:-6%;bottom:0;width:clamp(34px,5.2vw,58px);height:auto;overflow:visible;animation:korun 9s linear 1.8s infinite}
+.ko-run .bob{animation:kobob .36s steps(1) infinite}
+.ko-run .la{animation:kolg .36s steps(1) infinite}.ko-run .lb{animation:kolg .36s steps(1) infinite reverse}
+.ko-run .cn{animation:kocoin 1.2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes korun{from{left:-6%}to{left:104%}}
+@keyframes kobob{0%{transform:translateY(0)}50%{transform:translateY(-.6px)}}
+@keyframes kolg{0%{opacity:1}50%{opacity:0}}
+@keyframes kocoin{0%,100%{transform:translateY(0) scaleX(1)}50%{transform:translateY(-1px) scaleX(.35)}}
+@media(max-width:820px){.ko-b{padding:9px 10px;gap:7px}.ko-b strong{font-size:1.45rem}.ko-b .hf2{font-size:1.2rem}.ko-b .ar{display:none}.ko-w{gap:20px 10px}}
+@media(max-width:380px){.ko-b small{font-size:.5rem}.ko-b .hf2{display:none}}
 </style>
 </head>
 <body>
@@ -386,7 +399,7 @@ html{-webkit-text-size-adjust:100%;overflow-x:clip}body{overflow-x:clip;-webkit-
 <section id="kaoocr"><div class="wrap">
 <div class="ko-hero rv" id="koHero">
 <div class="mono">GSB AI Lab · Thai OCR · 2026</div>
-<h2 class="ko-t" aria-label="KaoOCR."><span class="ko-k" aria-hidden="true"><b style="--i:0">K</b><b style="--i:1">a</b><b style="--i:2">o</b></span><span class="ko-o" aria-hidden="true"><b style="--i:3">O</b><b style="--i:4">C</b><b style="--i:5">R</b><b class="dot" style="--i:7">.</b></span><svg viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true"><path d="M4 24 C90 6 190 38 300 18 S510 8 596 22"/></svg></h2>
+<h2 class="ko-t" aria-label="KaoOCR."><span class="ko-k" aria-hidden="true"><b style="--i:0">K</b><b style="--i:1">a</b><b style="--i:2">o</b></span><span class="ko-o" aria-hidden="true"><b style="--i:3">O</b><b style="--i:4">C</b><b style="--i:5">R</b><b class="dot" style="--i:7">.</b></span><svg viewBox="0 0 600 40" preserveAspectRatio="none" aria-hidden="true"><path d="M4 24 C90 6 190 38 300 18 S510 8 596 22"/></svg><span class="ko-run" aria-hidden="true"><svg viewBox="0 0 16 13" shape-rendering="crispEdges"><g class="bob"><g class="cn"><rect x="6" y="0" width="3" height="3" fill="#ffd23f"/><rect x="7" y="1" width="1" height="1" fill="#fff08a"/></g><rect x="2" y="4" width="9" height="5" fill="#ff8fc4"/><rect x="3" y="3" width="7" height="1" fill="#ff8fc4"/><rect x="10" y="3" width="4" height="5" fill="#ff8fc4"/><rect x="14" y="5" width="1" height="2" fill="#f95ba6"/><rect x="11" y="2" width="2" height="1" fill="#f95ba6"/><rect x="12" y="4" width="1" height="1" fill="#2b0b1d"/><rect x="1" y="5" width="1" height="1" fill="#f95ba6"/><g class="la"><rect x="3" y="9" width="2" height="3" fill="#f95ba6"/><rect x="9" y="9" width="2" height="3" fill="#f95ba6"/></g><g class="lb"><rect x="4" y="9" width="2" height="2" fill="#f95ba6"/><rect x="8" y="9" width="2" height="2" fill="#f95ba6"/></g></g></svg></span></h2>
 <span class="ko-sp" style="right:8%;top:14%" aria-hidden="true">✦</span><span class="ko-sp" style="right:22%;top:58%;animation-delay:.8s" aria-hidden="true">✦</span><span class="ko-sp" style="right:2%;top:70%;animation-delay:1.6s;font-size:1rem" aria-hidden="true">✺</span>
 <p class="ko-tag"><span>first local OCR LLM of GSB</span><i class="ko-star" aria-hidden="true">★</i></p>
 </div>
@@ -690,7 +703,7 @@ var P=[['OpenThai2.1-OCR-Markdown',68.1,0],['KaoOCR-Ledger-1.0b',67.6,1],['KaoOC
 $('#koVs').innerHTML=VS.map(function(v){return '<div class="ko-vs"><div><span class="mono">'+v[0]+'</span><h4>'+v[1]+'</h4><small>vs '+v[2]+'</small></div><div class="ko-pair"><div class="ko-r"><div class="ko-bar" style="--w:'+v[3]/M*100+'%"></div><i>'+v[3].toFixed(1)+'</i></div><div class="ko-r"><div class="ko-bar b" style="--w:'+v[4]/M*100+'%"></div><i>'+v[4].toFixed(1)+'</i></div></div><div class="ko-gain" data-to="'+(v[3]-v[4]).toFixed(1)+'" data-p="1">+'+(v[3]-v[4]).toFixed(1)+'</div></div>'}).join('');
 function ch(id,rows){$(id).innerHTML=rows.map(function(r){return '<div class="ko-r '+(r[2]?'k':'')+'"><span>'+r[0]+'</span><div class="t"><div class="ko-bar '+(r[2]?'':'b')+'" style="--w:'+r[1]/M*100+'%"></div><i>'+r[1].toFixed(1)+'</i></div></div>'}).join('')}
 ch('#koO',O);ch('#koP',P);
-$('#koW').innerHTML=[['General','OCR text'],['Ledger','OCR + parsing']].map(function(f){return '<div class="ko-wr"><div class="ko-wn"><b>'+f[0]+'</b><small>'+f[1]+'</small></div>'+[['1.0c',1],['1.0b',0],['1.0a',0]].map(function(v){return '<a class="'+(v[1]?'new':'')+'" href="https://huggingface.co/kaopanboonyuen/KaoOCR-'+f[0]+'-'+v[0]+'" target="_blank" rel="noopener" aria-label="KaoOCR-'+f[0]+'-'+v[0]+' on Hugging Face">🤗 '+v[0]+(v[1]?' <em>latest</em>':'')+' ↗</a>'}).join('')+'</div>'}).join('');
+$('#koW').innerHTML='<div class="cap">grab the weights ↓</div>'+['General','Ledger'].map(function(f){return ['1.0c','1.0b','1.0a'].map(function(v,i){return '<a class="ko-b'+(i?'':' new')+'" href="https://huggingface.co/kaopanboonyuen/KaoOCR-'+f+'-'+v+'" target="_blank" rel="noopener" aria-label="KaoOCR-'+f+'-'+v+' on Hugging Face">'+(i?'':'<i>latest</i>')+'<span class="hf2" aria-hidden="true">🤗</span><div><small>KaoOCR-'+f+'</small><strong>'+v+'</strong></div><span class="ar" aria-hidden="true">↗</span></a>'}).join('')}).join('');
 function cnt(el){var to=+el.dataset.to,p=el.dataset.p?'+':'';if(rm){el.textContent=p+to.toFixed(1);return}var t0=performance.now();(function f(t){var k=Math.min(1,(t-t0)/1400);el.textContent=p+(to*(1-Math.pow(1-k,4))).toFixed(1);if(k<1)requestAnimationFrame(f)})(t0)}
 var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.querySelectorAll('[data-to]').forEach(cnt);io2.unobserve(e.target)}})},{threshold:.3});
 io2.observe($('#koSts'));io2.observe($('#koVs'));
