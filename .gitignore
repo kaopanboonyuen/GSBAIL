@@ -217,3 +217,4 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 .DS_Store
+gsbail_img/gsb_sample_for_ocr_demo.zip
